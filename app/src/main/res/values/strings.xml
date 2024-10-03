@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ChapterKeep</string>
+    <string name="app_sub_name_2lines">당신의 독서 여정을\n한 페이지씩 기록하세요.</string>
+    <string name="app_sub_name">당신의 독서 여정을 한 페이지씩 기록하세요.</string>
+
+    <string name="signup">회원가입</string>
 </resources>
