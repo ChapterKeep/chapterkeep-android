@@ -1,7 +1,30 @@
 <resources>
+    // 앱 시작
     <string name="app_name">ChapterKeep</string>
     <string name="app_sub_name_2lines">당신의 독서 여정을\n한 페이지씩 기록하세요.</string>
     <string name="app_sub_name">당신의 독서 여정을 한 페이지씩 기록하세요.</string>
 
+    // 회원가입_아이디
     <string name="signup">회원가입</string>
+    <string name="id">아이디</string>
+    <string name="check">중복 확인</string>
+    <string name="next_button">다음으로</string>
+    <string name="password">비밀번호</string>
+    <string name="checkpassword">비밀번호 확인</string>
+    <string name="signup_id">아이디를 입력해주세요(10자 제한)</string>
+    <string name="signup_id_possible">사용 가능한 아이디입니다.</string>
+    <string name="signup_id_impossible">이미 존재하는 아이디입니다.</string>
+    <string name="signup_password">비밀번호를 입력해주세요</string>
+    <string name="signup_password_incorrect">비밀번호가 일치하지 않습니다.</string>
+
+    // 회원가입_닉네임
+    <string name="signup_profile">프로필 사진(선택)</string>
+    <string name="signup_profile_button">이미지 등록</string>
+    <string name="signup_nickname">닉네임(10자 제한)</string>
+    <string name="signup_nickname_possible">사용 가능한 닉네임입니다.</string>
+    <string name="signup_nickname_impossible">이미 존재하는 닉네임입니다.</string>
+    <string name="signup_myself">간단한 자기소개를 입력해주세요(80자 제한)</string>
+    <string name="signup_myself_field">자기소개 입력</string>
+    <string name="signup_button">가입하기</string>
+
 </resources>

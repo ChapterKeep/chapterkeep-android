@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chapter.chapterkeep.R
 
 @Composable
 fun ChangeButton(
@@ -31,6 +32,24 @@ fun ChangeButton(
             text = label,
             fontSize = 18.sp,
             color = colorResource(id = fontColor())
+        )
+    }
+}
+
+@Composable
+fun CommonButton(
+    label: String,
+    onClick: () ->Unit
+) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(colorResource(id = R.color.main_green)),
+        shape = RoundedCornerShape(8.dp),
+    ){
+        Text(
+            text = label,
+            fontSize = 13.sp,
+            color = colorResource(id = R.color.white)
         )
     }
 }

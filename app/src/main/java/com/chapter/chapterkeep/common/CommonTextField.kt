@@ -98,3 +98,34 @@ fun PassWordTextField(
         shape = RoundedCornerShape(8.dp)
     )
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LimitTextField(
+    value: String,
+    onValueChange : (String)->Unit,
+    label: String,
+    keyboardType: KeyboardType,
+    imeAction: ImeAction,
+    maxLength : Int
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = {
+            if (it.length <= maxLength) {
+                onValueChange(it)
+            }
+        },
+        label = { Text(text = label) },
+        keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = colorResource(id = R.color.gray_500),
+            unfocusedBorderColor = colorResource(id = R.color.gray_500),
+            focusedLabelColor = colorResource(id = R.color.gray_600),
+            unfocusedLabelColor = colorResource(id = R.color.gray_600)
+        ),
+        modifier = Modifier
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp)
+    )
+}

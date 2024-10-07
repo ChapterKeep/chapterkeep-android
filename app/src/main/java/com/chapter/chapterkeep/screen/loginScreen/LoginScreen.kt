@@ -1,5 +1,6 @@
 package com.chapter.chapterkeep.screen.loginScreen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -42,10 +43,9 @@ fun LoginScreen(navController: NavHostController){
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
     ){
-        Spacer(modifier = Modifier.height(70.dp))
+        Spacer(modifier = Modifier.height(150.dp))
         Column {
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -69,7 +69,7 @@ fun LoginScreen(navController: NavHostController){
                 CommonTextField(
                     value = userID,
                     onValueChange = {userID = it},
-                    label = "아이디",
+                    label = stringResource(R.string.id),
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Next
                 )
@@ -78,7 +78,7 @@ fun LoginScreen(navController: NavHostController){
                 PassWordTextField(
                     value = userPassWord,
                     onValueChange = {userPassWord = it},
-                    label = "비밀번호",
+                    label = stringResource(R.string.password),
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done
                 )
@@ -95,11 +95,20 @@ fun LoginScreen(navController: NavHostController){
                 }
             }
         }
-        Spacer(modifier = Modifier.height(0.dp))
-        Text(
-            text = stringResource(R.string.signup),
-            color = colorResource(R.color.gray_700),
-            fontSize = 16.sp
-        )
+        Column(
+            modifier= Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Text(
+                text = stringResource(R.string.signup),
+                color = colorResource(R.color.gray_700),
+                fontSize = 16.sp,
+                modifier = Modifier.clickable {
+                    navController.navigate("Signup_ID")
+                }
+            )
+        }
+
     }
 }
