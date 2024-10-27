@@ -15,7 +15,8 @@
     <string name="signup_id_possible">사용 가능한 아이디입니다.</string>
     <string name="signup_id_impossible">이미 존재하는 아이디입니다.</string>
     <string name="signup_password">비밀번호를 입력해주세요</string>
-    <string name="signup_password_incorrect">비밀번호가 일치하지 않습니다.</string>
+    <string name="signup_password_incorrect">비밀번호가 조건에 부합하지 않습니다.</string>
+    <string name="signup_password_notsame">비밀번호가 일치하지 않습니다.</string>
 
     // 회원가입_닉네임
     <string name="signup_profile">프로필 사진(선택)</string>

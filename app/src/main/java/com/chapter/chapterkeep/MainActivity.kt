@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.chapter.chapterkeep.navigate.NavGraph
+import com.chapter.chapterkeep.ui.navigate.NavGraph
 import com.chapter.chapterkeep.ui.theme.ChapterKeepTheme
 
 class MainActivity : ComponentActivity() {

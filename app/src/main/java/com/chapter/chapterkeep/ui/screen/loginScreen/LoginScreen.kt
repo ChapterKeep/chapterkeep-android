@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.screen.loginScreen
+package com.chapter.chapterkeep.ui.screen.loginScreen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,26 +25,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.common.ChangeButton
-import com.chapter.chapterkeep.common.CommonTextField
-import com.chapter.chapterkeep.common.PassWordTextField
+import com.chapter.chapterkeep.model.Routes
+import com.chapter.chapterkeep.ui.component.ChangeButton
+import com.chapter.chapterkeep.ui.component.CommonTextField
+import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
+import com.chapter.chapterkeep.ui.component.PassWordTextField
 
 @Composable
-fun LoginScreen(navController: NavHostController){
+fun LoginScreen(navController: NavHostController) {
     var userID by remember {
         mutableStateOf("")
     }
-    var userPassWord by remember{
+    var userPassWord by remember {
         mutableStateOf("")
     }
     val isButtonEnabled = userID.isNotEmpty() && userPassWord.isNotEmpty()
+
+    DoubleBackPressToExit()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-    ){
+    ) {
         Spacer(modifier = Modifier.height(150.dp))
         Column {
             Column(
@@ -68,7 +72,7 @@ fun LoginScreen(navController: NavHostController){
             Column {
                 CommonTextField(
                     value = userID,
-                    onValueChange = {userID = it},
+                    onValueChange = { userID = it },
                     label = stringResource(R.string.id),
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Next
@@ -77,7 +81,7 @@ fun LoginScreen(navController: NavHostController){
 
                 PassWordTextField(
                     value = userPassWord,
-                    onValueChange = {userPassWord = it},
+                    onValueChange = { userPassWord = it },
                     label = stringResource(R.string.password),
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done
@@ -86,26 +90,28 @@ fun LoginScreen(navController: NavHostController){
 
                 ChangeButton(
                     label = "로그인",
-                    color = {if (isButtonEnabled) R.color.main_green else R.color.gray_400},
-                    fontColor = {if(isButtonEnabled) R.color.white else R.color.gray_600 }
+                    color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
+                    fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_600 }
                 ) {
-                    if (isButtonEnabled){
-                        navController.navigate("Home")
+                    if (isButtonEnabled) {
+                        navController.navigate(Routes.Home.route) {
+                            popUpTo(Routes.Login.route) { inclusive = true }
+                        }
                     }
                 }
             }
         }
         Column(
-            modifier= Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
+        ) {
             Text(
                 text = stringResource(R.string.signup),
                 color = colorResource(R.color.gray_700),
                 fontSize = 16.sp,
                 modifier = Modifier.clickable {
-                    navController.navigate("Signup_ID")
+                    navController.navigate(Routes.Signup_ID.route)
                 }
             )
         }

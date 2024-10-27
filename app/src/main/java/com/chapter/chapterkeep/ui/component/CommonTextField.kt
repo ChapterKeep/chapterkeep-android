@@ -1,6 +1,9 @@
-package com.chapter.chapterkeep.common
+package com.chapter.chapterkeep.ui.component
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,18 +20,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CommonTextField(
     value: String,
-    onValueChange : (String)->Unit,
+    onValueChange: (String) -> Unit,
     label: String,
     keyboardType: KeyboardType,
     imeAction: ImeAction
@@ -54,7 +60,7 @@ fun CommonTextField(
 @Composable
 fun PassWordTextField(
     value: String,
-    onValueChange : (String) -> Unit,
+    onValueChange: (String) -> Unit,
     label: String,
     keyboardType: KeyboardType,
     imeAction: ImeAction
@@ -103,11 +109,11 @@ fun PassWordTextField(
 @Composable
 fun LimitTextField(
     value: String,
-    onValueChange : (String)->Unit,
+    onValueChange: (String) -> Unit,
     label: String,
     keyboardType: KeyboardType,
     imeAction: ImeAction,
-    maxLength : Int
+    maxLength: Int
 ) {
     OutlinedTextField(
         value = value,
@@ -128,4 +134,48 @@ fun LimitTextField(
             .fillMaxWidth(),
         shape = RoundedCornerShape(8.dp)
     )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LabelledTextFieldWithLimit(
+    value: String,
+    onValueChange: (String) -> Unit,
+    textLabel: Int,
+    fieldLabel: Int,
+    maxLength: Int,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Done,
+    height: Int
+) {
+    Column {
+        Text(
+            text = stringResource(id = textLabel),
+            color = colorResource(R.color.gray_600),
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(Modifier.height(10.dp))
+
+        OutlinedTextField(
+            value = value,
+            onValueChange = {
+                if (it.length <= maxLength) {
+                    onValueChange(it)
+                }
+            },
+            label = { Text(text = stringResource(id = fieldLabel)) },
+            keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = colorResource(id = R.color.gray_500),
+                unfocusedBorderColor = colorResource(id = R.color.gray_500),
+                focusedLabelColor = colorResource(id = R.color.gray_600),
+                unfocusedLabelColor = colorResource(id = R.color.gray_600)
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(height.dp),
+            shape = RoundedCornerShape(8.dp)
+        )
+    }
 }

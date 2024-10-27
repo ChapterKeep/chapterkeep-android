@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.common
+package com.chapter.chapterkeep.ui.component
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +18,7 @@ fun ChangeButton(
     label: String,
     color: () -> Int,
     fontColor: () -> Int,
-    onClick: () ->Unit
+    onClick: () -> Unit
 ) {
     Button(
         onClick = onClick,
@@ -27,7 +27,7 @@ fun ChangeButton(
             .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(colorResource(id = color())),
         shape = RoundedCornerShape(8.dp)
-    ){
+    ) {
         Text(
             text = label,
             fontSize = 18.sp,
@@ -39,13 +39,13 @@ fun ChangeButton(
 @Composable
 fun CommonButton(
     label: String,
-    onClick: () ->Unit
+    onClick: () -> Unit
 ) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(colorResource(id = R.color.main_green)),
         shape = RoundedCornerShape(8.dp),
-    ){
+    ) {
         Text(
             text = label,
             fontSize = 13.sp,
