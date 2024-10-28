@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.model.Routes
+import com.chapter.chapterkeep.ui.navigate.Routes
 import kotlinx.coroutines.delay
 
 @Composable
@@ -46,7 +46,7 @@ fun SplashScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.img_chapterkeep_whitelogo),
+                painter = painterResource(id = R.drawable.img_chapterkeep_whitelogo_text),
                 contentDescription = "앱 로고",
                 modifier = Modifier.size(90.dp)
             )

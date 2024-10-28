@@ -1,9 +1,14 @@
-package com.chapter.chapterkeep.ui.screen.loginScreen
+package com.chapter.chapterkeep.ui.screen.signupScreen
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+
+const val PASSWORD_MIN_LENGTH = 8
+const val PASSWORD_MAX_LENGTH = 16
+val PASSWORD_REGEX =
+    Regex("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{$PASSWORD_MIN_LENGTH,$PASSWORD_MAX_LENGTH}\$")
 
 class SignUpViewModel : ViewModel() {
     var userID by mutableStateOf("")

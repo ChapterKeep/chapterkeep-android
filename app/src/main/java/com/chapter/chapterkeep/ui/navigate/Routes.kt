@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.model
+package com.chapter.chapterkeep.ui.navigate
 
 sealed class Routes(val route: String) {
     object Splash : Routes("Splash")
