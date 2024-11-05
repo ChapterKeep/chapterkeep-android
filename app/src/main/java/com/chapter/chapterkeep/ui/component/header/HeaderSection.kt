@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.header
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

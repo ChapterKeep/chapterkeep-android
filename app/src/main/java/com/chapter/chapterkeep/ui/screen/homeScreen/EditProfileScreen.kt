@@ -34,10 +34,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.ChangeButton
-import com.chapter.chapterkeep.ui.component.HeaderLogo
-import com.chapter.chapterkeep.ui.component.InputWithCheckSection
-import com.chapter.chapterkeep.ui.component.InputWithImage
-import com.chapter.chapterkeep.ui.component.LabelledTextFieldWithLimit
+import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogo
+import com.chapter.chapterkeep.ui.component.textfield.InputWithCheckSection
+import com.chapter.chapterkeep.ui.component.textfield.InputWithImage
+import com.chapter.chapterkeep.ui.component.textfield.LabelledTextFieldWithLimit
 import com.chapter.chapterkeep.ui.navigate.Routes
 
 @Composable
@@ -49,7 +49,7 @@ fun EditProfileScreen(
     var userMyself by remember { mutableStateOf(viewModel.userMyself) }
 
     Scaffold(
-        topBar = { HeaderLogo() },
+        topBar = { HeaderWhiteLogo() },
         containerColor = colorResource(R.color.main_green).copy(alpha = 0.7f)
     ) { paddingValues ->
         Column(

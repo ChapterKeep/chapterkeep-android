@@ -35,4 +35,25 @@
     <string name="editprofile_title">프로필 수정</string>
     <string name="editprofile_button">수정하기</string>
 
+    // 홈화면
+    <string name="home_open_button">책장 공개</string>
+    <string name="home_unopen_button">책장 비공개</string>
+    <string name="home_book_count">작성글 수</string>
+    <string name="home_book">권</string>
+
+    // 독서 기록 등록 페이지
+    <string name="addbook_selectbook_title">책 선택*</string>
+    <string name="addbook_selectbook_isbn_search">ISBN 조회하기</string>
+    <string name="addbook_selectbook_isbn">ISBN 입력</string>
+    <string name="addbook_selectbook_isbn_submit">확인</string>
+    <string name="addbook_selectbook_book_title">책 제목</string>
+    <string name="addbook_selectbook_book_writer">글쓴이</string>
+    <string name="addbook_star">별점*</string>
+    <string name="addbook_title">제목*</string>
+    <string name="addbook_quote">인용 문구*</string>
+    <string name="addbook_detail">상세 내용*</string>
+    <string name="addbook_detail_count">%s/1000</string>
+    <string name="addbook_submit">등록하기</string>
+
+
 </resources>

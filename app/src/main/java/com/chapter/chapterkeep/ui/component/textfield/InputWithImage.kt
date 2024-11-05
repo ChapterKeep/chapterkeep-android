@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.textfield
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -26,7 +26,7 @@ import com.chapter.chapterkeep.R
 fun InputWithImage() {
     Text(
         text = stringResource(R.string.signup_profile),
-        color = colorResource(R.color.gray_600),
+        color = colorResource(R.color.gray_700),
         fontSize = 15.sp,
         fontWeight = FontWeight.Bold
     )
@@ -48,13 +48,13 @@ fun InputWithImage() {
                 TODO("사진 등록")
             },
             contentPadding = PaddingValues(12.dp, 0.dp),
-            colors = ButtonDefaults.buttonColors(colorResource(R.color.gray_400)),
+            colors = ButtonDefaults.buttonColors(colorResource(R.color.gray_200)),
             shape = RoundedCornerShape(12.dp)
         ) {
             Text(
                 text = stringResource(R.string.signup_profile_button),
                 fontSize = 14.sp,
-                color = colorResource(R.color.gray_600)
+                color = colorResource(R.color.gray_700)
             )
         }
     }

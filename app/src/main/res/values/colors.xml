@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="main_green">#467E2B</color>
+    <color name="main_deepgreen">#2F4B21</color>
+    <color name="sub_green">#3B7E2B</color>
 
-    <color name="gray_400">#F1F1F1</color>
-    <color name="gray_500">#E0E0E0</color>
-    <color name="gray_600">#828282</color>
-    <color name="gray_700">#676767</color>
+    <color name="gray_200">#F1F1F1</color>
+    <color name="gray_300">#F1F2F3</color>
+    <color name="gray_400">#E0E0E0</color>
+    <color name="gray_500">#A0A5B1</color>
+    <color name="gray_600">#AAAAAA</color>
+    <color name="gray_700">#828282</color>
+    <color name="gray_800">#676767</color>
+    <color name="gray_900">#1C1E22</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

@@ -18,11 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.ui.component.ChangeButtonWithBottom
+import com.chapter.chapterkeep.ui.component.header.HeaderSection
+import com.chapter.chapterkeep.ui.component.textfield.InputWithCheckSection
+import com.chapter.chapterkeep.ui.component.textfield.PassWordTextField
 import com.chapter.chapterkeep.ui.navigate.Routes
-import com.chapter.chapterkeep.ui.component.ChangeButton
-import com.chapter.chapterkeep.ui.component.HeaderSection
-import com.chapter.chapterkeep.ui.component.InputWithCheckSection
-import com.chapter.chapterkeep.ui.component.PassWordTextField
 
 @Composable
 fun SignUpScreen_ID(
@@ -38,10 +38,10 @@ fun SignUpScreen_ID(
     Scaffold(
         topBar = { HeaderSection() },
         bottomBar = {
-            ChangeButton(
+            ChangeButtonWithBottom(
                 label = stringResource(R.string.next_button),
-                color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
-                fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_600 }
+                color = { if (isButtonEnabled) R.color.main_green else R.color.gray_200 },
+                fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
             ) {
                 if (isButtonEnabled) {
                     navController.navigate(Routes.Signup_NickName.route)
@@ -57,7 +57,7 @@ fun SignUpScreen_ID(
         ) {
             Text(
                 text = stringResource(R.string.signup_id),
-                color = colorResource(R.color.gray_600),
+                color = colorResource(R.color.gray_700),
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -81,7 +81,7 @@ fun SignUpScreen_ID(
 
             Text(
                 text = stringResource(R.string.signup_password),
-                color = colorResource(R.color.gray_600),
+                color = colorResource(R.color.gray_700),
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -109,13 +109,13 @@ fun SignUpScreen_ID(
                 Text(
                     text = stringResource(R.string.signup_password_incorrect),
                     fontSize = 13.sp,
-                    color = colorResource(R.color.gray_600)
+                    color = colorResource(R.color.gray_700)
                 )
             } else if (!viewModel.isPasswordMatching) {
                 Text(
                     text = stringResource(R.string.signup_password_notsame),
                     fontSize = 13.sp,
-                    color = colorResource(R.color.gray_600)
+                    color = colorResource(R.color.gray_700)
                 )
             }
 

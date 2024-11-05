@@ -6,8 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel: ViewModel(){
-    var userNickName by mutableStateOf("")
-    var userMyself by mutableStateOf("")
+    var userNickName by mutableStateOf("고먐고먐미")
+    var userMyself by mutableStateOf("안녕하세요 저는 만화책을 좋아합니다.")
+    var userBookCount by mutableStateOf(8)
     var isNickNameAvailable by mutableStateOf(true)
     var isNickNameClicked by mutableStateOf(false)
 

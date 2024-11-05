@@ -22,9 +22,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.ChangeButton
-import com.chapter.chapterkeep.ui.component.CommonTextField
 import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
-import com.chapter.chapterkeep.ui.component.PassWordTextField
+import com.chapter.chapterkeep.ui.component.textfield.CommonTextField
+import com.chapter.chapterkeep.ui.component.textfield.PassWordTextField
 import com.chapter.chapterkeep.ui.navigate.Routes
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
 
@@ -72,7 +72,8 @@ fun LoginScreen(
                     onValueChange = { loginViewModel.updateUserId(it) },
                     label = stringResource(R.string.id),
                     keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
+                    imeAction = ImeAction.Next,
+                    shape = 8
                 )
                 Spacer(Modifier.height(16.dp))
 
@@ -87,8 +88,8 @@ fun LoginScreen(
 
                 ChangeButton(
                     label = stringResource(R.string.login),
-                    color = { if (isButtonEnabled) R.color.main_green else R.color.gray_400 },
-                    fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_600 }
+                    color = { if (isButtonEnabled) R.color.main_green else R.color.gray_200 },
+                    fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
                 ) {
                     if (isButtonEnabled) {
                         loginViewModel.login(loginViewModel.userID, loginViewModel.userPassWord){nickName, myself ->
@@ -109,7 +110,7 @@ fun LoginScreen(
         ) {
             Text(
                 text = stringResource(R.string.signup),
-                color = colorResource(R.color.gray_700),
+                color = colorResource(R.color.gray_800),
                 fontSize = 16.sp,
                 modifier = Modifier.clickable {
                     navController.navigate(Routes.Signup_ID.route)

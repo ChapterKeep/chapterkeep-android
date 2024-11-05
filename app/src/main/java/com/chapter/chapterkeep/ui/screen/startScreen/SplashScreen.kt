@@ -46,7 +46,7 @@ fun SplashScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.img_chapterkeep_whitelogo_text),
+                painter = painterResource(id = R.drawable.img_chapterkeep_whitelogo),
                 contentDescription = "앱 로고",
                 modifier = Modifier.size(90.dp)
             )

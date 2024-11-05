@@ -1,9 +1,6 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.textfield
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,14 +17,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,7 +31,8 @@ fun CommonTextField(
     onValueChange: (String) -> Unit,
     label: String,
     keyboardType: KeyboardType,
-    imeAction: ImeAction
+    imeAction: ImeAction,
+    shape: Int
 ) {
     OutlinedTextField(
         value = value,
@@ -45,14 +40,14 @@ fun CommonTextField(
         label = { Text(text = label) },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.gray_500),
-            unfocusedBorderColor = colorResource(id = R.color.gray_500),
-            focusedLabelColor = colorResource(id = R.color.gray_600),
-            unfocusedLabelColor = colorResource(id = R.color.gray_600)
+            focusedBorderColor = colorResource(id = R.color.gray_400),
+            unfocusedBorderColor = colorResource(id = R.color.gray_400),
+            focusedLabelColor = colorResource(id = R.color.gray_700),
+            unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
         modifier = Modifier
             .fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(shape.dp)
     )
 }
 
@@ -81,10 +76,10 @@ fun PassWordTextField(
         label = { Text(text = label) },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.gray_500),
-            unfocusedBorderColor = colorResource(id = R.color.gray_500),
-            focusedLabelColor = colorResource(id = R.color.gray_600),
-            unfocusedLabelColor = colorResource(id = R.color.gray_600)
+            focusedBorderColor = colorResource(id = R.color.gray_400),
+            unfocusedBorderColor = colorResource(id = R.color.gray_400),
+            focusedLabelColor = colorResource(id = R.color.gray_700),
+            unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
         trailingIcon = {
             IconButton(
@@ -125,10 +120,10 @@ fun LimitTextField(
         label = { Text(text = label) },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorResource(id = R.color.gray_500),
-            unfocusedBorderColor = colorResource(id = R.color.gray_500),
-            focusedLabelColor = colorResource(id = R.color.gray_600),
-            unfocusedLabelColor = colorResource(id = R.color.gray_600)
+            focusedBorderColor = colorResource(id = R.color.gray_400),
+            unfocusedBorderColor = colorResource(id = R.color.gray_400),
+            focusedLabelColor = colorResource(id = R.color.gray_700),
+            unfocusedLabelColor = colorResource(id = R.color.gray_700)
         ),
         modifier = Modifier
             .fillMaxWidth(),

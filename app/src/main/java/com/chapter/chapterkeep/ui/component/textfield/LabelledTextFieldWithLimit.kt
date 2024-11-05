@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.textfield
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -35,7 +35,7 @@ fun LabelledTextFieldWithLimit(
     Column {
         Text(
             text = textLabel,
-            color = colorResource(R.color.gray_600),
+            color = colorResource(R.color.gray_700),
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold
         )
@@ -51,10 +51,10 @@ fun LabelledTextFieldWithLimit(
             label = { Text(text = fieldLabel) },
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = colorResource(id = R.color.gray_500),
-                unfocusedBorderColor = colorResource(id = R.color.gray_500),
-                focusedLabelColor = colorResource(id = R.color.gray_600),
-                unfocusedLabelColor = colorResource(id = R.color.gray_600)
+                focusedBorderColor = colorResource(id = R.color.gray_400),
+                unfocusedBorderColor = colorResource(id = R.color.gray_400),
+                focusedLabelColor = colorResource(id = R.color.gray_700),
+                unfocusedLabelColor = colorResource(id = R.color.gray_700)
             ),
             modifier = Modifier
                 .fillMaxWidth()
