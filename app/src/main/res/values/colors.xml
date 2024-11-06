@@ -2,6 +2,7 @@
 <resources>
     <color name="main_green">#467E2B</color>
     <color name="main_deepgreen">#2F4B21</color>
+    <color name="main_darkgreen">#42503E</color>
     <color name="sub_green">#3B7E2B</color>
 
     <color name="gray_200">#F1F1F1</color>

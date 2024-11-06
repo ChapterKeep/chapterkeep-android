@@ -44,7 +44,7 @@ fun ProfileBar(
     ) {
         Image(
             painter = painterResource(R.drawable.img_profile_bar),
-            contentDescription = "",
+            contentDescription = null,
             modifier = Modifier
                 .height(141.dp)
                 .fillMaxWidth()

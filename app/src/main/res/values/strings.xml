@@ -55,5 +55,8 @@
     <string name="addbook_detail_count">%s/1000</string>
     <string name="addbook_submit">등록하기</string>
 
+    // 독서 기록 조회 페이지
+    <string name="viewbook_edit">수정하기</string>
+    <string name="viewbook_delete">삭제하기</string>
 
 </resources>
