@@ -18,7 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.ui.component.CommonButton
+import com.chapter.chapterkeep.ui.component.WrapContentButton
 
 
 @Composable
@@ -63,7 +63,7 @@ fun InputWithCheckSection(
                 fontSize = 13.sp
             )
 
-            CommonButton(
+            WrapContentButton(
                 label = stringResource(R.string.check),
                 13
             ) {

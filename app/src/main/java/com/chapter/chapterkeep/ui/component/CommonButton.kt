@@ -73,6 +73,26 @@ fun ChangeButtonWithBottom(
 fun CommonButton(
     label: String,
     fontSize: Int,
+    onClick: () -> Unit
+) {
+    Button(
+        onClick = onClick,
+        contentPadding = PaddingValues(11.dp),
+        colors = ButtonDefaults.buttonColors(colorResource(R.color.main_green)),
+        shape = RoundedCornerShape(8.dp)
+    ) {
+        Text(
+            text = label,
+            fontSize = fontSize.sp,
+            color = colorResource(R.color.white)
+        )
+    }
+}
+
+@Composable
+fun WrapContentButton(
+    label: String,
+    fontSize: Int,
     modifier : Modifier = Modifier,
     onClick: () -> Unit
 ) {

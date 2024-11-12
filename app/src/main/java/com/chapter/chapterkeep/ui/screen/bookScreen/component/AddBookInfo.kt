@@ -24,7 +24,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.ui.component.CommonButton
+import com.chapter.chapterkeep.ui.component.WrapContentButton
 import com.chapter.chapterkeep.ui.component.textfield.GrayISBNTextField
 
 @Composable
@@ -93,7 +93,7 @@ fun AddBookInfo(
                             .padding(end = 15.dp)
                     )
 
-                    CommonButton(
+                    WrapContentButton(
                         label = stringResource(R.string.addbook_selectbook_isbn_submit),
                         fontSize = 13,
                         modifier = Modifier.padding(3.dp)
