@@ -33,7 +33,7 @@ fun AddBookStar(starStates: MutableList<Boolean>) {
             starStates.forEachIndexed { index, isYellow ->
                 Image(
                     painter = painterResource(
-                        if (isYellow) R.drawable.icon_star_yellow else R.drawable.icon_star_gray
+                        if (isYellow) R.drawable.ic_star_yellow else R.drawable.ic_star_gray
                     ),
                     contentDescription = null,
                     modifier = Modifier

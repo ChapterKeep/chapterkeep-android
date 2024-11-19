@@ -64,9 +64,9 @@ fun PassWordTextField(
 
     val passwordResource: (Boolean) -> Int = {
         if (it) {
-            R.drawable.baseline_remove_red_eye_24 // 패스워드가 보일 때
+            R.drawable.ic_visibility_on // 패스워드가 보일 때
         } else {
-            R.drawable.baseline_visibility_off_24 // 패스워드가 가려질 때
+            R.drawable.ic_visibility_off // 패스워드가 가려질 때
         }
     }
 

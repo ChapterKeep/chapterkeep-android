@@ -18,10 +18,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.ui.component.BookShelf
-import com.chapter.chapterkeep.ui.component.BottomBar
+import com.chapter.chapterkeep.ui.component.Bar.BottomBar
+import com.chapter.chapterkeep.ui.component.Bar.ProfileBar
 import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
-import com.chapter.chapterkeep.ui.component.ProfileBar
 import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogoWithBtn
 import com.chapter.chapterkeep.ui.navigate.Routes
 
@@ -40,7 +39,7 @@ fun HomeScreen(
         topBar = {
             HeaderWhiteLogoWithBtn(
                 label = R.string.home_open_button,
-                image = R.drawable.outline_lock_open_24
+                image = R.drawable.ic_lock_open_24
             ) {
                 TODO("책장 공개 비공개")
             }
@@ -81,7 +80,6 @@ fun HomeScreen(
                     BookShelf()
                     BookShelf()
                     BookShelf()
-
                 }
             }
         }

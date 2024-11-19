@@ -41,7 +41,7 @@ fun DropDownMenu(
             .padding(top = 10.dp)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.icon_dropdown_menu),
+            painter = painterResource(id = R.drawable.ic_dropdown_menu),
             contentDescription = "menu",
             modifier = Modifier
                 .size(2.dp, 12.dp)

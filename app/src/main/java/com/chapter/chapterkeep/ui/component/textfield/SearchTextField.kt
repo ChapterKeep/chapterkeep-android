@@ -23,7 +23,6 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,10 +32,11 @@ import com.chapter.chapterkeep.R
 fun SearchTextField(
     search: MutableState<String>,
     searchHasFocus: MutableState<Boolean>,
+    searchHint: String,
     modifier: Modifier
 ) {
     val focusRequester = FocusRequester()
-    val label = stringResource(R.string.search_hint)
+    val label = searchHint
 
     Row(
         modifier = modifier

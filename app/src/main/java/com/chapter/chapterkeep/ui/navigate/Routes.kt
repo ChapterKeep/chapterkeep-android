@@ -13,9 +13,11 @@ sealed class Routes(val route: String) {
     object Board : Routes("Board")
     object My : Routes("My")
 
-    // 추가화면
+    // 디테일 화면 - 홈
     object EditProfile : Routes("EditProfile")
     object AddBook : Routes("AddBook")
     object ViewBook : Routes("ViewBook")
 
+    // 디테일 화면 - 게시판
+    object Baekiljang : Routes("Baekiljang") // 백일장
 }

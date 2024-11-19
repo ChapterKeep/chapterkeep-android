@@ -24,7 +24,7 @@ fun ViewBookQuote(
             .padding(start = 10.dp)
     ) {
         Image(
-            painter = painterResource(R.drawable.icon_quote),
+            painter = painterResource(R.drawable.ic_quote),
             contentDescription = null,
             modifier = Modifier
                 .size(16.dp, 22.dp)

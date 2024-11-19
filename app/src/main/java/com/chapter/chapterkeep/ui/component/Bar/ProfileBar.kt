@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.component
+package com.chapter.chapterkeep.ui.component.Bar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.ui.component.WrapContentButton
 import com.chapter.chapterkeep.ui.navigate.Routes
 
 @Composable

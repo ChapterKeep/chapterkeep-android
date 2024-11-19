@@ -82,7 +82,7 @@ fun TabProfileItem(
                     )
 
                     Image(
-                        painter = painterResource(R.drawable.icon_navigate_detail),
+                        painter = painterResource(R.drawable.ic_navigate_detail),
                         contentDescription = null,
                         modifier = Modifier.size(20.dp)
                     )

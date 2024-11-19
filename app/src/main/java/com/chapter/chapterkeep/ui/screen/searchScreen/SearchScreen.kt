@@ -29,7 +29,7 @@ import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.model.BookData
 import com.chapter.chapterkeep.model.ProfileData
-import com.chapter.chapterkeep.ui.component.BottomBar
+import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.TabMenu
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
@@ -114,6 +114,11 @@ fun SearchScreen(
                 SearchTextField(
                     search = remember { mutableStateOf(search) },
                     searchHasFocus = remember { mutableStateOf(searchHasFocus) },
+                    searchHint = if (bookCheck) {
+                        stringResource(R.string.search_hint_book)
+                    } else {
+                        stringResource(R.string.search_hint_nickname)
+                    },
                     modifier = Modifier.weight(1f)
                 )
                 Spacer(modifier = Modifier.width(10.dp))

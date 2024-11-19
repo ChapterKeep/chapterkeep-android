@@ -5,6 +5,9 @@
     <color name="main_darkgreen">#42503E</color>
     <color name="sub_green">#3B7E2B</color>
 
+    <color name="main_pink">#FF8282</color>
+
+
     <color name="gray_200">#F1F1F1</color>
     <color name="gray_300">#F1F2F3</color>
     <color name="gray_400">#E0E0E0</color>
