@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.screen.boardScreen
+package com.chapter.chapterkeep.ui.screen.boardScreen.BaekiljangScreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,6 +28,8 @@ import com.chapter.chapterkeep.ui.component.Bar.BoardTopBar
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
 import com.chapter.chapterkeep.ui.component.textfield.SearchTextField
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardManagerItem
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardUserItem
 
 @Composable
 fun BaekiljangScreen(

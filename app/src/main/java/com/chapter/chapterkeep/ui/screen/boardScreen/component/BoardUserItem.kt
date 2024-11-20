@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.screen.boardScreen
+package com.chapter.chapterkeep.ui.screen.boardScreen.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -11,42 +11,28 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 
 @Composable
-fun BoardManagerItem(
+fun BoardUserItem(
     title: String,
-    heartCount: Int
+    heartCount: Int,
+    userName: String
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
         Spacer(Modifier.height(10.dp))
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(R.drawable.ic_alert),
-                contentDescription = null,
-                modifier = Modifier.size(16.dp, 20.dp)
-            )
-            Spacer(Modifier.width(10.dp))
-
-            Text(
-                text = title,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
+        Text(
+            text = title,
+            fontSize = 15.sp
+        )
         Spacer(Modifier.height(10.dp))
 
         Row {
@@ -66,7 +52,7 @@ fun BoardManagerItem(
             Spacer(Modifier.width(20.dp))
 
             Text(
-                text = stringResource(R.string.baekiljang_manager),
+                text = userName,
                 fontSize = 11.sp,
                 color = colorResource(R.color.gray_800)
             )

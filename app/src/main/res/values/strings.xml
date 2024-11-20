@@ -69,6 +69,16 @@
     <string name="search_btn">검색</string>
     <string name="search_book_count">%s권</string>
 
+    // 게시판
+    <string name="board_board">게시판</string>
+    <string name="board_rank">위</string>
+    <string name="board_month_baekiljang">이달의 백일</string>
+    <string name="board_today_recommend">오늘의 추천 도서</string>
+    <string name="board_genre">장르별 게시판</string>
+    <string name="board_oneline">한줄평 게시판</string>
+    <string name="board_baekiljang">백일장 게시판</string>
+    <string name="board_free">자유 게시판</string>
+
     // 백일장 게시판
     <string name="baekiljang_board">백일장 게시판</string>
     <string name="baekiljang_search">게시판의 글을 검색해보세요</string>
