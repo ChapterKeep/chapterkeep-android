@@ -5,7 +5,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.chapter.chapterkeep.ui.screen.boardScreen.BaekiljangScreen.BaekiljangScreen
+import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.AddBaekiljangScreen
+import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.BaekiljangScreen
 import com.chapter.chapterkeep.ui.screen.boardScreen.BoardScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.AddBookScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.ViewBookScreen
@@ -70,6 +71,9 @@ fun NavGraph(navController: NavHostController) {
         // 디테일 화면 - 게시판
         composable(route = Routes.Baekiljang.route) { // 백일장 게시판 화면
             BaekiljangScreen(navController)
+        }
+        composable(route = Routes.AddBaekiljang.route){
+            AddBaekiljangScreen(navController)
         }
     }
 }

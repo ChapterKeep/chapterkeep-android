@@ -26,9 +26,9 @@ import com.chapter.chapterkeep.model.BoardRankData
 import com.chapter.chapterkeep.model.BoardRecommendData
 import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
-import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardRank
-import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardRecommend
-import com.chapter.chapterkeep.ui.screen.boardScreen.component.BoardTypeBox
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.board.BoardRank
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.board.BoardRecommend
+import com.chapter.chapterkeep.ui.screen.boardScreen.component.board.BoardTypeBox
 
 @Composable
 fun BoardScreen(

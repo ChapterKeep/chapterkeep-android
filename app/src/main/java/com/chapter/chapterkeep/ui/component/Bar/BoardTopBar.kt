@@ -12,12 +12,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.ui.navigate.Routes
 
 @Composable
 fun BoardTopBar(
@@ -35,12 +35,16 @@ fun BoardTopBar(
             modifier = Modifier
                 .size(24.dp)
                 .clickable {
-                    TODO("게시판 화면으로 이동")
+                    navController.navigate(Routes.Board.route) {
+                        popUpTo(Routes.Board.route){
+                            inclusive = true
+                        }
+                    }
                 }
         )
 
         Text(
-            text = stringResource(R.string.baekiljang_board),
+            text = boardName,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.main_green)
@@ -52,7 +56,7 @@ fun BoardTopBar(
             modifier = Modifier
                 .size(24.dp)
                 .clickable {
-                    TODO("백일장 게시판 글 등록 화면으로 이동")
+                    navController.navigate(route = Routes.AddBaekiljang.route)
                 }
         )
     }

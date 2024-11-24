@@ -1,4 +1,4 @@
-package com.chapter.chapterkeep.ui.screen.boardScreen.component
+package com.chapter.chapterkeep.ui.screen.boardScreen.component.board
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
