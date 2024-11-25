@@ -107,4 +107,12 @@
     <string name="addboard_detail_textfield">내용을 입력하세요.</string>
     <string name="addboard_button">등록하기</string>
 
+    // 더보기 화면
+    <string name="more_my_title">내가 쓴 게시글</string>
+    <string name="more_like_title">좋아요 누른 게시글</string>
+    <string name="more_comment_title">댓글 단 게시글</string>
+    <string name="more_my_subtitle">내가 쓴 게시글을\n한번에 모아보세요</string>
+    <string name="more_like_subtitle">좋아요 누른 게시글을\n한번에 모아보세요</string>
+    <string name="more_comment_subtitle">댓글 단 게시글을\n한번에 모아보세요</string>
+
 </resources>

@@ -115,19 +115,28 @@ fun MyScreen(
 
             MyPostList(
                 title = stringResource(R.string.mypage_profile_my_write),
-                posts = myposts
+                posts = myposts,
+                onMoreClick = {
+                    navController.navigate(Routes.More.createRoute("my_write"))
+                }
             )
             Spacer(Modifier.height(20.dp))
 
             MyPostList(
                 title = stringResource(R.string.mypage_profile_like_write),
-                posts = mylikeposts
+                posts = mylikeposts,
+                onMoreClick = {
+                    navController.navigate(Routes.More.createRoute("like_write"))
+                }
             )
             Spacer(Modifier.height(20.dp))
 
             MyPostList(
                 title = stringResource(R.string.mypage_profile_comment_write),
-                posts = mycommentposts
+                posts = mycommentposts,
+                onMoreClick = {
+                    navController.navigate(Routes.More.createRoute("comment_write"))
+                }
             )
         }
     }

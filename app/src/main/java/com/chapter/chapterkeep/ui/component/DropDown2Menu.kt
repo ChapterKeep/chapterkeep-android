@@ -29,7 +29,7 @@ import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 
 @Composable
-fun DropDownMenu(
+fun DropDown2Menu(
     navController: NavHostController
 ) {
     var expended by rememberSaveable {
@@ -72,6 +72,54 @@ fun DropDownMenu(
                     .size(90.dp, 20.dp)
                     .align(Alignment.CenterHorizontally)
             )
+            DropdownMenuItem(
+                text = {
+                    Text(
+                        text = stringResource(R.string.viewbook_delete),
+                        fontSize = 12.sp,
+                        color = Color.Gray,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                },
+                onClick = {
+                    expended = false
+                    TODO("삭제하기 로직")
+                },
+                modifier = Modifier
+                    .size(90.dp, 20.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+        }
+    }
+}
+
+@Composable
+fun DropDownMenu(
+    navController: NavHostController
+) {
+    var expended by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    Box(
+        modifier = Modifier
+            .padding(top = 10.dp)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_dropdown_menu),
+            contentDescription = "menu",
+            modifier = Modifier
+                .size(2.dp, 12.dp)
+                .clickable { expended = true }
+        )
+        DropdownMenu(
+            expanded = expended,
+            onDismissRequest = { expended = false },
+            modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.White)
+        ) {
             DropdownMenuItem(
                 text = {
                     Text(

@@ -22,7 +22,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
@@ -31,7 +30,8 @@ import com.chapter.chapterkeep.model.PostData
 @Composable
 fun MyPostList(
     title: String,
-    posts: List<PostData>
+    posts: List<PostData>,
+    onMoreClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -98,7 +98,7 @@ fun MyPostList(
                     .fillMaxWidth()
                     .padding(top = 20.dp)
                     .clickable {
-                        // 각 게시글 모아보기로 이동
+                        onMoreClick()
                     },
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -118,24 +118,4 @@ fun MyPostList(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun MyWriteListPreview() {
-    MyPostList(
-        title = "내가 쓴 게시글",
-        posts = listOf(
-            PostData(
-                title = "첫 번째 게시글 제목",
-                time = "2024-11-25",
-                writer = "작성자 A"
-            ),
-            PostData(
-                title = "두 번째 게시글 제목",
-                time = "2024-11-24",
-                writer = "작성자 B"
-            )
-        )
-    )
 }

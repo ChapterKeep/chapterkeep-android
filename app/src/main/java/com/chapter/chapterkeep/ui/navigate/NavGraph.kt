@@ -3,11 +3,13 @@ package com.chapter.chapterkeep.ui.navigate
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.chapter.chapterkeep.ui.screen.boardScreen.BoardScreen
 import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.AddBaekiljangScreen
 import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.BaekiljangScreen
-import com.chapter.chapterkeep.ui.screen.boardScreen.BoardScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.AddBookScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.ViewBookScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.EditProfileScreen
@@ -15,6 +17,7 @@ import com.chapter.chapterkeep.ui.screen.homeScreen.HomeScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
 import com.chapter.chapterkeep.ui.screen.loginScreen.LoginScreen
 import com.chapter.chapterkeep.ui.screen.loginScreen.LoginViewModel
+import com.chapter.chapterkeep.ui.screen.myScreen.MoreScreen
 import com.chapter.chapterkeep.ui.screen.myScreen.MyScreen
 import com.chapter.chapterkeep.ui.screen.searchScreen.SearchScreen
 import com.chapter.chapterkeep.ui.screen.signupScreen.SignUpScreen_ID
@@ -72,8 +75,17 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Routes.Baekiljang.route) { // 백일장 게시판 화면
             BaekiljangScreen(navController)
         }
-        composable(route = Routes.AddBaekiljang.route){
+        composable(route = Routes.AddBaekiljang.route) {
             AddBaekiljangScreen(navController)
+        }
+
+        // 디테일 화면 - 마이페이지
+        composable(
+            route = Routes.More.route,
+            arguments = listOf(navArgument("type") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val type = backStackEntry.arguments?.getString("type") ?: ""
+            MoreScreen(navController, type)
         }
     }
 }

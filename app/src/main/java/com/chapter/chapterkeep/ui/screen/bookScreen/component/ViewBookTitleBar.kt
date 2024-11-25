@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.ui.component.DropDownMenu
+import com.chapter.chapterkeep.ui.component.DropDown2Menu
 
 @Composable
 fun ViewBookTitleBar(
@@ -46,7 +46,7 @@ fun ViewBookTitleBar(
                 fontWeight = FontWeight.SemiBold
             )
 
-            DropDownMenu(navController)
+            DropDown2Menu(navController)
         }
 
         Row(
