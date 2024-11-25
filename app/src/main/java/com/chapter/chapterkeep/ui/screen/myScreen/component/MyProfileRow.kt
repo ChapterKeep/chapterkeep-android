@@ -2,6 +2,7 @@ package com.chapter.chapterkeep.ui.screen.myScreen.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -10,15 +11,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -26,19 +24,17 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
 
 @Composable
 fun MyProfileRow(
-    modifier: Modifier = Modifier
+    userName: String,
+    writeAccount: Int,
+    logoutOnClick: () -> Unit,
+    deleteOnClick: () -> Unit
 ) {
-    var userName by remember{
-        mutableStateOf("책 먹는 고양이")
-    }
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -61,14 +57,12 @@ fun MyProfileRow(
         Spacer(Modifier.width(32.dp))
 
         Column(
-            modifier = modifier.fillMaxHeight(),
-            verticalArrangement = Arrangement.Center
-        ){
-            Row(
-
-            ) {
+            modifier = Modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Row{
                 Text(
-                    text= userName,
+                    text = userName,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = colorResource(R.color.main_green)
@@ -80,12 +74,43 @@ fun MyProfileRow(
                     fontWeight = FontWeight.SemiBold
                 )
             }
+
+            Text(
+                text = stringResource(R.string.mypage_profile_write_count, writeAccount.toString()),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+
+            Row {
+                Text(
+                    text = stringResource(R.string.mypage_profile_logout),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = colorResource(R.color.gray_700),
+                    modifier = Modifier
+                        .padding(end = 5.dp)
+                        .clickable {
+                            logoutOnClick()
+                        }
+                )
+                Text(
+                    text = stringResource(R.string.mypage_profile_divider),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = colorResource(R.color.gray_700)
+                )
+                Text(
+                    text = stringResource(R.string.mypage_profile_delete_account),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = colorResource(R.color.gray_700),
+                    modifier = Modifier
+                        .padding(start = 5.dp)
+                        .clickable {
+                            deleteOnClick()
+                        }
+                )
+            }
         }
     }
-}
-
-@Preview
-@Composable
-fun MyProfileRowPreview(){
-    MyProfileRow()
 }

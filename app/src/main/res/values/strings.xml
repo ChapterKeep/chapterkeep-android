@@ -86,6 +86,15 @@
 
     // 마이페이지
     <string name="mypage_profile_nickname"> 님</string>
+    <string name="mypage_profile_write_count">작성글 수: %s 권</string>
+    <string name="mypage_profile_logout">로그아웃</string>
+    <string name="mypage_profile_divider"> | </string>
+    <string name="mypage_profile_delete_account">회원탈퇴</string>
+    <string name="mypage_profile_time_writer">%s / %s</string>
+    <string name="mypage_profile_my_write">내가 쓴 게시글</string>
+    <string name="mypage_profile_like_write">좋아요 누른 게시글</string>
+    <string name="mypage_profile_comment_write">댓글 단 게시글</string>
+    <string name="mypage_profile_more">더보기</string>
 
     // 백일장 게시글 등록 페이지
     <string name="addbaekiljang_board">백일장 작성하기</string>
