@@ -1,6 +1,7 @@
 package com.chapter.chapterkeep.ui.screen.boardScreen.component.board
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,10 +24,15 @@ import com.chapter.chapterkeep.R
 fun BoardUserItem(
     title: String,
     heartCount: Int,
-    userName: String
+    userName: String,
+    onClick: ()->Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                onClick()
+            }
     ) {
         Spacer(Modifier.height(10.dp))
         Text(

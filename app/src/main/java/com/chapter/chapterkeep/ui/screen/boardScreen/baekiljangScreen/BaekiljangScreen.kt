@@ -28,6 +28,7 @@ import com.chapter.chapterkeep.ui.component.Bar.BoardTopBar
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
 import com.chapter.chapterkeep.ui.component.textfield.SearchTextField
+import com.chapter.chapterkeep.ui.navigate.Routes
 import com.chapter.chapterkeep.ui.screen.boardScreen.component.board.BoardManagerItem
 import com.chapter.chapterkeep.ui.screen.boardScreen.component.board.BoardUserItem
 
@@ -110,7 +111,10 @@ fun BaekiljangScreen(
                     BoardUserItem(
                         title = boards[index].title,
                         heartCount = boards[index].heartCount,
-                        userName = boards[index].userName
+                        userName = boards[index].userName,
+                        onClick = {
+                            navController.navigate(Routes.ViewBaekiljang.route)
+                        }
                     )
                 }
             }

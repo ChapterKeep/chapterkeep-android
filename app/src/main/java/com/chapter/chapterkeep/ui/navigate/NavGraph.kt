@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import com.chapter.chapterkeep.ui.screen.boardScreen.BoardScreen
 import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.AddBaekiljangScreen
 import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.BaekiljangScreen
+import com.chapter.chapterkeep.ui.screen.boardScreen.baekiljangScreen.ViewBaekiljangScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.AddBookScreen
 import com.chapter.chapterkeep.ui.screen.bookScreen.ViewBookScreen
 import com.chapter.chapterkeep.ui.screen.homeScreen.EditProfileScreen
@@ -75,8 +76,11 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Routes.Baekiljang.route) { // 백일장 게시판 화면
             BaekiljangScreen(navController)
         }
-        composable(route = Routes.AddBaekiljang.route) {
+        composable(route = Routes.AddBaekiljang.route) { // 백일장 게시글 등록
             AddBaekiljangScreen(navController)
+        }
+        composable(route = Routes.ViewBaekiljang.route) { // 백일장 게시글 조회
+            ViewBaekiljangScreen(navController)
         }
 
         // 디테일 화면 - 마이페이지
