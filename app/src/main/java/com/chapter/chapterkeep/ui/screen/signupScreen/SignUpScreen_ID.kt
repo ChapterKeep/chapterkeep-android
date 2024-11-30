@@ -98,7 +98,7 @@ fun SignUpScreen_ID(
 
             PassWordTextField(
                 value = userCheckPassWord,
-                onValueChange = { viewModel.updateUserCheckPassword(it) }, // 수정된 부분
+                onValueChange = { viewModel.updateUserCheckPassword(it) },
                 label = stringResource(R.string.checkpassword),
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done

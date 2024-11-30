@@ -1,5 +1,6 @@
 package com.chapter.chapterkeep.ui.screen.loginScreen
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -19,6 +21,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.ChangeButton
@@ -26,17 +29,17 @@ import com.chapter.chapterkeep.ui.component.DoubleBackPressToExit
 import com.chapter.chapterkeep.ui.component.textfield.CommonTextField
 import com.chapter.chapterkeep.ui.component.textfield.PassWordTextField
 import com.chapter.chapterkeep.ui.navigate.Routes
-import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
 
 @Composable
 fun LoginScreen(
     navController: NavHostController,
-    loginViewModel: LoginViewModel,
-    homeViewModel: HomeViewModel
+    loginViewModel: LoginViewModel = viewModel()
 ) {
     val userID by loginViewModel::userID
     val userPassWord by loginViewModel::userPassWord
     val isButtonEnabled = userID.isNotEmpty() && userPassWord.isNotEmpty()
+
+    val context = LocalContext.current
 
     DoubleBackPressToExit()
 
@@ -92,11 +95,12 @@ fun LoginScreen(
                     fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
                 ) {
                     if (isButtonEnabled) {
-                        loginViewModel.login(loginViewModel.userID, loginViewModel.userPassWord){nickName, myself ->
-                            homeViewModel.updateUserNickName(nickName)
-                            homeViewModel.updateUserMyself(myself)
-                            navController.navigate(Routes.Home.route) {
-                                popUpTo(Routes.Login.route) { inclusive = true }
+                        loginViewModel.login(userID, userPassWord) { success, message ->
+                            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                            if (success) {
+                                navController.navigate(Routes.Home.route) {
+                                    popUpTo(Routes.Login.route) { inclusive = true }
+                                }
                             }
                         }
                     }

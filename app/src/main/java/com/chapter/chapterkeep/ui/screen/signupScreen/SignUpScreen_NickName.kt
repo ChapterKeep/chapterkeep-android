@@ -46,11 +46,17 @@ fun SignUpScreen_NickName(
                 fontColor = { if (isButtonEnabled) R.color.white else R.color.gray_700 }
             ) {
                 if (isButtonEnabled) {
-                    viewModel.clearData()
-                    navController.navigate(Routes.Login.route) {
-                        popUpTo(Routes.Login.route) { inclusive = true }
-                    }
-                    Toast.makeText(context, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                    viewModel.submitSignUp(
+                        onSuccess = { message ->
+                            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                            navController.navigate(Routes.Login.route) {
+                                popUpTo(Routes.Login.route) { inclusive = true }
+                            }
+                        },
+                        onError = { error ->
+                            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+                        }
+                    )
                 }
             }
         }
