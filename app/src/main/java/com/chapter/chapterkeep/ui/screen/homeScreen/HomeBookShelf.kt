@@ -19,10 +19,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import com.chapter.chapterkeep.R
+import com.chapter.chapterkeep.api.dto.response.BookShelfData
 
 @Composable
-fun BookShelf() {
+fun BookShelf(books: List<BookShelfData>) {
     Box(
         modifier = Modifier
             .padding(bottom = 30.dp)
@@ -38,26 +40,13 @@ fun BookShelf() {
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.Bottom
         ) {
-            Image(
-                painter = painterResource(R.drawable.img_home_book),
-                contentDescription = "",
-                modifier = Modifier
-                    .size(62.dp, 100.dp)
-            )
-
-            Image(
-                painter = painterResource(R.drawable.img_home_book),
-                contentDescription = "",
-                modifier = Modifier
-                    .size(62.dp, 100.dp)
-            )
-
-            Image(
-                painter = painterResource(R.drawable.img_home_book),
-                contentDescription = "",
-                modifier = Modifier
-                    .size(62.dp, 100.dp)
-            )
+            books.forEach{book->
+                Image(
+                    painter = rememberAsyncImagePainter(book.coverUrl),
+                    contentDescription = "",
+                    modifier = Modifier.size(62.dp, 100.dp)
+                )
+            }
         }
         Image(
             painter = painterResource(R.drawable.img_home_bookshelf),

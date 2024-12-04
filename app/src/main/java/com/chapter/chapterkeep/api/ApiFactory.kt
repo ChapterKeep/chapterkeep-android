@@ -1,6 +1,8 @@
 package com.chapter.chapterkeep.api
 
 import com.chapter.chapterkeep.BuildConfig
+import com.chapter.chapterkeep.api.service.BookService
+import com.chapter.chapterkeep.api.service.HomeService
 import com.chapter.chapterkeep.api.service.MemberService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -14,8 +16,11 @@ object ApiFactory {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
+    private val authInterceptor = AuthInterceptor()
+
     private val client = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
+        .addInterceptor(authInterceptor)
         .build()
 
     val retrofit: Retrofit by lazy {
@@ -31,4 +36,6 @@ object ApiFactory {
 
 object ServicePool {
     val memberService = ApiFactory.create<MemberService>()
+    val homeService = ApiFactory.create<HomeService>()
+    val bookService = ApiFactory.create<BookService>()
 }

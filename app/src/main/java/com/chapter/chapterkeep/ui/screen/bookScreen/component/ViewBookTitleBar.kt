@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,15 +56,22 @@ fun ViewBookTitleBar(
                 .padding(top = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = date,
-                fontSize = 10.sp,
-                color = colorResource(R.color.gray_600),
-            )
+            Row {
+                Text(
+                    text = stringResource(R.string.viewbook_date),
+                    fontSize = 10.sp,
+                    color = colorResource(R.color.gray_600)
+                )
+                Spacer(Modifier.width(5.dp))
 
-            Row(
+                Text(
+                    text = date,
+                    fontSize = 10.sp,
+                    color = colorResource(R.color.gray_600),
+                )
+            }
 
-            ) {
+            Row{
                 starStates.forEachIndexed { index, isYellow ->
                     Image(
                         painter = painterResource(

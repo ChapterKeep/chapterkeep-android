@@ -13,15 +13,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
 import com.chapter.chapterkeep.R
 
 @Composable
 fun ViewBookBar(
-    image: Int,
+    image: String,
     bookTitle: String,
     bookWriter: String
 ) {
@@ -32,7 +32,7 @@ fun ViewBookBar(
             .padding(start = 10.dp)
     ) {
         Image(
-            painter = painterResource(image),
+            painter = rememberAsyncImagePainter(image),
             contentDescription = null,
             modifier= Modifier
                 .padding(end = 20.dp)

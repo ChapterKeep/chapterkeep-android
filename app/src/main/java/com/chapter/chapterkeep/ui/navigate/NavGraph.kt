@@ -31,7 +31,7 @@ fun NavGraph(navController: NavHostController) {
     val signUpViewModel: SignUpViewModel = viewModel()
     val homeViewModel: HomeViewModel = viewModel()
     val loginViewModel: LoginViewModel = viewModel()
-    NavHost(navController = navController, startDestination = Routes.Splash.route) {
+    NavHost(navController = navController, startDestination = Routes.ViewBook.route) {
         // 초기 화면
         composable(route = Routes.Splash.route) { // 스플래시
             SplashScreen(navController)
@@ -69,7 +69,7 @@ fun NavGraph(navController: NavHostController) {
             AddBookScreen(navController)
         }
         composable(route = Routes.ViewBook.route) { // 독서 기록 조회 화면
-            ViewBookScreen(navController)
+            ViewBookScreen(navController, 1)
         }
 
         // 디테일 화면 - 게시판

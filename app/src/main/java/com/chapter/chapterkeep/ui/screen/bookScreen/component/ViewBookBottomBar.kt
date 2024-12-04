@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -26,7 +27,9 @@ fun ViewBookBottomBar(
             .padding(start = 10.dp, end = 10.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ){
-        Row{
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ){
             Image(
                 painter = painterResource(R.drawable.ic_heart),
                 contentDescription = null,

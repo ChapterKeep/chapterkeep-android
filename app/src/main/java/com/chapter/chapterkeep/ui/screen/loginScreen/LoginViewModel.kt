@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chapter.chapterkeep.api.ServicePool
+import com.chapter.chapterkeep.api.TokenManager
 import com.chapter.chapterkeep.api.dto.request.RequestLoginDto
 import kotlinx.coroutines.launch
 
@@ -31,10 +32,21 @@ class LoginViewModel : ViewModel() {
                     )
                 )
 
-                if (response.code == "S001") {
-                    onLoginResult(true, "환영합니다!")
+                val token = response.headers()["Authorization"]?.replace("Bearer ", "")
+                if (!token.isNullOrEmpty()) {
+                    TokenManager.saveToken(token)
+                    val savedToken = TokenManager.getToken()
+                }
+
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody?.code == "S001") {
+                        onLoginResult(true, "환영합니다!")
+                    } else {
+                        onLoginResult(false, responseBody?.message ?: "알 수 없는 오류")
+                    }
                 } else {
-                    onLoginResult(false, response.message)
+                    onLoginResult(false, "로그인 실패: ${response.message()}")
                 }
             } catch (e: Exception) {
                 onLoginResult(false, "로그인 중 오류가 발생했습니다: ${e.message}")

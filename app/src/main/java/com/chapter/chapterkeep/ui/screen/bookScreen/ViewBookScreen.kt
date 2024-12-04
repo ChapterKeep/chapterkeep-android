@@ -14,20 +14,16 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.header.HeaderWhiteLogo
 import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookBar
@@ -37,21 +33,44 @@ import com.chapter.chapterkeep.ui.screen.bookScreen.component.ViewBookTitleBar
 
 @Composable
 fun ViewBookScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    reviewId: Long
 ) {
-    var bookTitle by remember { mutableStateOf("책 제목") }
-    var bookWriter by remember { mutableStateOf("글쓴이") }
+    val viewModel: ViewBookViewModel = viewModel()
 
-    var title by remember { mutableStateOf("제목") }
-    var date by remember { mutableStateOf("2024년 8월 23일") }
+    val image by viewModel::coverUrl
+    val bookTitle by viewModel::bookTitle
+    val bookWriter by viewModel::bookWriter
+    val title by viewModel::reviewTitle
+    val date by viewModel::createdAt
+    val starStates by viewModel::starStates
+    val quote by viewModel::quotation
+    val detail by viewModel::content
+    val heartCount by viewModel::likeCounts
+    val writer by viewModel::nickname
 
-    var starStates = remember { mutableStateListOf(true, true, true, false, false) }
+    val isLoading by viewModel::isLoading
+    val errorMessage by viewModel::errorMessage
 
-    var quote by remember { mutableStateOf("Life is too short") }
-    var detail by remember { mutableStateOf("이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부 이랬고 저랬고 뭐라뭐라 쏼라쏼라 어쩌구 저쩌구 난리법석 왈가왈부") }
+    LaunchedEffect(reviewId) {
+        viewModel.fetchBookReview(reviewId)
+    }
 
-    var heartCount by remember { mutableStateOf(41) }
-    var writer by remember { mutableStateOf("책 먹는 고양이") }
+    if (isLoading) {
+        // 로딩 중 화면 표시
+        Box(modifier = Modifier.fillMaxSize()) {
+            Text("Loading...", modifier = Modifier.align(Alignment.Center))
+        }
+        return
+    }
+
+    if (errorMessage != null) {
+        // 오류 발생 시 메시지 표시
+        Box(modifier = Modifier.fillMaxSize()) {
+            Text(errorMessage ?: "Unknown error", modifier = Modifier.align(Alignment.Center))
+        }
+        return
+    }
 
     val scrollState = rememberScrollState()
 
@@ -84,7 +103,7 @@ fun ViewBookScreen(
                         .padding(vertical = 35.dp, horizontal = 30.dp)
                 ) {
                     ViewBookBar(
-                        image = R.drawable.img_home_book,
+                        image = image,
                         bookTitle = bookTitle,
                         bookWriter = bookWriter
                     )
@@ -100,7 +119,7 @@ fun ViewBookScreen(
                     ViewBookTitleBar(
                         title = title,
                         date = date,
-                        starStates = starStates,
+                        starStates = starStates.toMutableList(),
                         navController = navController
                     )
                     Spacer(Modifier.height(8.dp))
@@ -138,10 +157,4 @@ fun ViewBookScreen(
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewViewBookScreen() {
-    ViewBookScreen(navController = rememberNavController())
 }

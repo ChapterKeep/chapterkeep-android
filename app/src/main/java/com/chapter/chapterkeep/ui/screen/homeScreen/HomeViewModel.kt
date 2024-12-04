@@ -4,26 +4,35 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.chapter.chapterkeep.api.ServicePool
+import com.chapter.chapterkeep.api.dto.response.BookShelfData
+import com.chapter.chapterkeep.api.dto.response.ProfileData
+import kotlinx.coroutines.launch
 
 class HomeViewModel: ViewModel(){
-    var userNickName by mutableStateOf("고먐고먐미")
-    var userMyself by mutableStateOf("안녕하세요 저는 만화책을 좋아합니다.")
-    var userBookCount by mutableStateOf(8)
+    var profileData by mutableStateOf(ProfileData("", "", null, false, 0))
+    var bookShelfData by mutableStateOf(listOf<BookShelfData>())
     var isNickNameAvailable by mutableStateOf(true)
     var isNickNameClicked by mutableStateOf(false)
 
-    fun updateUserNickName(nickname: String) {
-        userNickName = nickname
+    init {
+        fetchHomeData()
     }
 
-    fun updateUserMyself(myself: String) {
-        userMyself = myself
-    }
-
-    fun checkNickNameAvailability() {
-        // 실제 서버 통신 로직 추가
-        // 예시: userNickName를 서버로 보내서 중복 여부 확인 후, isNickNameAvailable 값을 업데이트
-        isNickNameAvailable = userNickName != "abcd" // 예시로 임의의 닉네임 "existingNickName"은 중복 처리
-        isNickNameClicked = true
+    fun fetchHomeData(){
+        viewModelScope.launch {
+            try {
+                val response = ServicePool.homeService.getHome()
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        profileData = it.data.profileResDto
+                        bookShelfData = it.data.bookShelfResDtoList
+                    }
+                }
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
     }
 }

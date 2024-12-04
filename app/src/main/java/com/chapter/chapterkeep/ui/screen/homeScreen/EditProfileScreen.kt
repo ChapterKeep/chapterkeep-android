@@ -31,6 +31,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.ChangeButton
@@ -39,14 +40,17 @@ import com.chapter.chapterkeep.ui.component.textfield.InputWithCheckSection
 import com.chapter.chapterkeep.ui.component.textfield.InputWithImage
 import com.chapter.chapterkeep.ui.component.textfield.LabelledTextFieldWithLimit
 import com.chapter.chapterkeep.ui.navigate.Routes
+import com.chapter.chapterkeep.ui.screen.signupScreen.SignUpViewModel
 
 @Composable
 fun EditProfileScreen(
     navController: NavHostController,
     viewModel: HomeViewModel
 ) {
-    var userNickName by remember { mutableStateOf(viewModel.userNickName) }
-    var userMyself by remember { mutableStateOf(viewModel.userMyself) }
+    val signUpViewModel: SignUpViewModel = viewModel()
+
+    var userNickName by remember { mutableStateOf(viewModel.profileData.nickname) }
+    var userMyself by remember { mutableStateOf(viewModel.profileData.introduction) }
 
     Scaffold(
         topBar = { HeaderWhiteLogo() },
@@ -104,7 +108,7 @@ fun EditProfileScreen(
                     availableMessage = R.string.signup_nickname_possible,
                     unavailableMessage = R.string.signup_nickname_impossible,
                     isClicked = viewModel.isNickNameClicked,
-                    onCheckClick = { viewModel.checkNickNameAvailability() }
+                    onCheckClick = { signUpViewModel.checkNickNameAvailability() }
                 )
 
                 LabelledTextFieldWithLimit(
@@ -122,8 +126,8 @@ fun EditProfileScreen(
                 color = { R.color.main_green },
                 fontColor = { R.color.white }
             ) {
-                viewModel.updateUserNickName(nickname = userNickName)
-                viewModel.updateUserMyself(myself = userMyself)
+                signUpViewModel.updateUserNickName(nickname = userNickName)
+                signUpViewModel.updateUserMyself(myself = userMyself)
 
                 navController.navigate(Routes.Home.route) {
                     popUpTo(Routes.Home.route) { inclusive = true }
