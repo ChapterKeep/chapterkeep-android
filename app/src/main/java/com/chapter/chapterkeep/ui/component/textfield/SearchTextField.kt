@@ -36,7 +36,6 @@ fun SearchTextField(
     modifier: Modifier
 ) {
     val focusRequester = FocusRequester()
-    val label = searchHint
 
     Row(
         modifier = modifier
@@ -51,18 +50,17 @@ fun SearchTextField(
         Image(
             painter = painterResource(id = R.drawable.ic_search_gray),
             contentDescription = null,
-            modifier = Modifier
-                .size(20.dp)
+            modifier = Modifier.size(20.dp)
         )
 
         if (!searchHasFocus.value && search.value.isEmpty()) {
             Text(
-                text = label,
+                text = searchHint,
                 color = Color.Gray,
                 modifier = Modifier.clickable {
                     focusRequester.requestFocus()
-                })
-
+                }
+            )
         }
 
         BasicTextField(
@@ -79,5 +77,4 @@ fun SearchTextField(
             singleLine = true,
         )
     }
-
 }

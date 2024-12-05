@@ -19,14 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
 import com.chapter.chapterkeep.R
 
 @Composable
 fun TabBookItem(
-    image: Int,
+    image: String,
     title: String,
     writer: String
 ) {
@@ -46,7 +46,7 @@ fun TabBookItem(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Image(
-                painter = painterResource(image),
+                painter = rememberAsyncImagePainter(image),
                 contentDescription = null,
                 modifier = Modifier.size(50.dp, 80.dp)
             )

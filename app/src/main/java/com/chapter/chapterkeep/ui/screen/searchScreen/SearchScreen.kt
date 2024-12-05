@@ -25,10 +25,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.model.BookData
-import com.chapter.chapterkeep.model.ProfileData
 import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.CommonButton
 import com.chapter.chapterkeep.ui.component.TabMenu
@@ -41,49 +41,25 @@ import com.chapter.chapterkeep.ui.screen.searchScreen.component.TabProfileItem
 fun SearchScreen(
     navController: NavHostController
 ) {
-    // 검색창
-    var search by remember {
-        mutableStateOf("")
-    }
-    var searchHasFocus by remember {
-        mutableStateOf(false)
-    }
+    val viewModel: SearchViewModel = viewModel()
 
-    // 탭
-    var bookCheck by remember {
-        mutableStateOf(true)
-    }
-    var profileCheck by remember {
-        mutableStateOf(false)
-    }
+    // UI 상태
+    val profileResults by viewModel.profileResults.collectAsStateWithLifecycle()
+    val bookResults by viewModel.bookResults.collectAsStateWithLifecycle()
+    val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
+    val errorMessage by viewModel.errorMessage.collectAsStateWithLifecycle()
 
-    val books = listOf(
-        // 더미데이터
-        BookData(R.drawable.img_home_book, "Book Title 1", "Author 1"),
-        BookData(R.drawable.img_home_book, "Book Title 2", "Author 2"),
-        BookData(R.drawable.img_home_book, "Book Title 3", "Author 3"),
-        BookData(R.drawable.img_home_book, "Book Title 4", "Author 4"),
-        BookData(R.drawable.img_home_book, "Book Title 5", "Author 5"),
-        BookData(R.drawable.img_home_book, "Book Title 6", "Author 6"),
-    )
+    // 검색 상태
+    val search = remember { mutableStateOf("") }
+    val searchHasFocus = remember { mutableStateOf(false) }
 
-    val profiles = listOf(
-        // 더미데이터
-        ProfileData(R.drawable.img_profile_select, "Author 1", 1),
-        ProfileData(R.drawable.img_profile_select, "Author 2", 2),
-        ProfileData(R.drawable.img_profile_select, "Author 3", 3),
-        ProfileData(R.drawable.img_profile_select, "Author 4", 4),
-        ProfileData(R.drawable.img_profile_select, "Author 5", 5),
-        ProfileData(R.drawable.img_profile_select, "Author 6", 6)
-    )
+    // 탭 상태
+    var bookCheck by remember { mutableStateOf(true) }
+    var profileCheck by remember { mutableStateOf(false) }
 
     Scaffold(
-        topBar = {
-            HeaderGreenLogo()
-        },
-        bottomBar = {
-            BottomBar(1, navController)
-        }
+        topBar = { HeaderGreenLogo() },
+        bottomBar = { BottomBar(1, navController) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -112,8 +88,8 @@ fun SearchScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 SearchTextField(
-                    search = remember { mutableStateOf(search) },
-                    searchHasFocus = remember { mutableStateOf(searchHasFocus) },
+                    search = search, // 상위 상태를 전달
+                    searchHasFocus = searchHasFocus,
                     searchHint = if (bookCheck) {
                         stringResource(R.string.search_hint_book)
                     } else {
@@ -127,7 +103,14 @@ fun SearchScreen(
                     label = stringResource(R.string.search_btn),
                     fontSize = 13
                 ) {
-                    TODO("검색")
+                    if (profileCheck) {
+                        if (search.value.isNotBlank()) { // 빈 값 검증
+                            viewModel.searchByNickname(search.value)
+                        } else {
+                        }
+                    } else {
+                        viewModel.searchByTitle(search.value)
+                    }
                 }
             }
 
@@ -137,40 +120,142 @@ fun SearchScreen(
                 onChanged = { bookCheck = !bookCheck; profileCheck = !profileCheck }
             )
 
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = colorResource(R.color.gray_400))
-                    .padding(start = 20.dp, end = 20.dp)
-            ) {
-                if (bookCheck) {
-                    items(
-                        count = books.size,
-                        key = { item -> item }
-                    ) { index ->
-                        TabBookItem(
-                            image = books[index].image,
-                            title = books[index].title,
-                            writer = books[index].writer
-                        )
-
-                        if (index == books.size - 1) {
-                            Spacer(modifier = Modifier.height(20.dp))
+            if (profileCheck) {
+                when {
+                    isLoading -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400))
+                                .padding(start = 20.dp, end = 20.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ){
+                            Text(
+                                text = stringResource(R.string.search_loading),
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            )
                         }
                     }
-                } else if (profileCheck) {
-                    items(
-                        count = profiles.size,
-                        key = { item -> item }
-                    ) { index ->
-                        TabProfileItem(
-                            image = profiles[index].image,
-                            name = profiles[index].name,
-                            writeCount = profiles[index].writeCount
-                        )
 
-                        if (index == profiles.size - 1) {
-                            Spacer(modifier = Modifier.height(20.dp))
+                    errorMessage != null -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400))
+                                .padding(start = 20.dp, end = 20.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ){
+                            Text(
+                                text = stringResource(R.string.search_unknown_error),
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            )
+                        }
+                    }
+
+                    profileResults.isEmpty() -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400))
+                                .padding(start = 20.dp, end = 20.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ){
+                            Text(
+                                text = stringResource(R.string.search_no_results),
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            )
+                        }
+                    }
+
+                    else -> {
+                        LazyColumn(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400))
+                                .padding(start = 20.dp, end = 20.dp)
+                        ) {
+                            items(
+                                count = profileResults.size,
+                                key = { profile -> profile }
+                            ) { index ->
+                                TabProfileItem(
+                                    image = R.drawable.img_profile_select, // 실제 URL로 변경 가능
+                                    name = profileResults[index].nickname,
+                                    writeCount = profileResults[index].bookReviewCount.toInt()
+                                )
+
+                                if (index == profileResults.size - 1) {
+                                    Spacer(modifier = Modifier.height(20.dp))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (bookCheck) {
+                when {
+                    isLoading -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400)),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(text = stringResource(R.string.search_loading))
+                        }
+                    }
+
+                    errorMessage != null -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400)),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(text = errorMessage ?: stringResource(R.string.search_unknown_error))
+                        }
+                    }
+
+                    bookResults.isEmpty() -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400)),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(text = stringResource(R.string.search_no_results))
+                        }
+                    }
+
+                    else -> {
+                        LazyColumn(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(color = colorResource(R.color.gray_400))
+                                .padding(horizontal = 20.dp)
+                        ) {
+                            items(
+                                count = bookResults.size,
+                                key = { book -> book }
+                            ) { index ->
+                                val book = bookResults[index]
+                                TabBookItem(
+                                    image = book.coverUrl,
+                                    title = book.reviewTitle,
+                                    writer = book.nickname
+                                )
+
+                                if (index == bookResults.size - 1) {
+                                    Spacer(modifier = Modifier.height(20.dp))
+                                }
+                            }
                         }
                     }
                 }

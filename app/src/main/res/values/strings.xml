@@ -69,6 +69,10 @@
     <string name="search_hint_nickname">닉네임을 검색해주세요</string>
     <string name="search_btn">검색</string>
     <string name="search_book_count">%s권</string>
+    <string name="search_loading">로딩 중</string>
+    <string name="search_unknown_error">알 수 없는 오류</string>
+    <string name="search_no_results">검색 결과가 없습니다</string>
+
 
     // 게시판
     <string name="board_board">게시판</string>
