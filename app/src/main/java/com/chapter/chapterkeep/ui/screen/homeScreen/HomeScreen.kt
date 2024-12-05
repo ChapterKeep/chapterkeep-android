@@ -84,9 +84,14 @@ fun HomeScreen(
             )
             Spacer(Modifier.height(20.dp))
 
-            LazyColumn{
+            LazyColumn {
                 items(bookShelfData.chunked(3)) { chunk ->
-                    BookShelf(books = chunk)
+                    BookShelf(
+                        books = chunk,
+                        onBookClick = { reviewId ->
+                            navController.navigate("ViewBook/$reviewId")
+                        }
+                    )
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.chapter.chapterkeep.ui.screen.homeScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -24,7 +25,10 @@ import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.api.dto.response.BookShelfData
 
 @Composable
-fun BookShelf(books: List<BookShelfData>) {
+fun BookShelf(
+    books: List<BookShelfData>,
+    onBookClick: (Long) -> Unit
+) {
     Box(
         modifier = Modifier
             .padding(bottom = 30.dp)
@@ -44,7 +48,11 @@ fun BookShelf(books: List<BookShelfData>) {
                 Image(
                     painter = rememberAsyncImagePainter(book.coverUrl),
                     contentDescription = "",
-                    modifier = Modifier.size(62.dp, 100.dp)
+                    modifier = Modifier
+                        .size(62.dp, 100.dp)
+                        .clickable {
+                            onBookClick(book.reviewId)
+                        }
                 )
             }
         }
