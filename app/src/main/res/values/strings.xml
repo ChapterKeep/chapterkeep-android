@@ -83,6 +83,11 @@
     <string name="board_oneline">한줄평 게시판</string>
     <string name="board_baekiljang">백일장 게시판</string>
     <string name="board_free">자유 게시판</string>
+    <string name="board_anonymous">익명</string>
+    <string name="board_rank_none">아직 아무도 참여하지 않았습니다.</string>
+    <string name="board_writer_none">작가 미상</string>
+    <string name="board_genre_none">장르 미상</string>
+    <string name="board_recommend_none">오늘의 추천 도서가 없습니다.</string>
 
     // 백일장 게시판
     <string name="baekiljang_board">백일장 게시판</string>

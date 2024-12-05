@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -42,7 +44,9 @@ fun BoardRankItem(
     val isFirstPlace = item.rank == 1
 
     Box(
-        modifier = Modifier.size(135.dp, 170.dp)
+        modifier = Modifier
+            .width(135.dp)
+            .wrapContentHeight()
     ) {
         if (isFirstPlace) {
             Image(
@@ -54,7 +58,9 @@ fun BoardRankItem(
         }
 
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .wrapContentHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -71,11 +77,10 @@ fun BoardRankItem(
                     ),
                 contentScale = ContentScale.Crop
             )
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(77.dp)
+                    .heightIn(min = 77.dp)
                     .border(
                         width = 1.dp,
                         color = colorResource(R.color.gray_600),
@@ -85,15 +90,33 @@ fun BoardRankItem(
                         color = Color.White,
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .padding(bottom = 10.dp),
+                    .padding(start = 20.dp, end = 20.dp, bottom = 10.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Bottom
             ) {
                 Text(
-                    text = item.title,
-                    fontSize = 15.sp
+                    text = item.rank.toString() + stringResource(R.string.board_rank),
+                    fontSize = 13.sp,
+                    color = colorResource(R.color.white),
+                    modifier = Modifier
+                        .background(
+                            color = colorResource(R.color.main_green),
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                        .padding(
+                            horizontal = if (isFirstPlace) 15.dp else 12.dp,
+                            vertical = if (isFirstPlace) 12.dp else 8.dp
+                        )
                 )
-                Spacer(Modifier.height(3.dp))
+
+                Spacer(Modifier.height(5.dp))
+
+                Text(
+                    text = item.title,
+                    fontSize = 15.sp,
+                    color = Color.Black,
+                )
+                Spacer(Modifier.height(8.dp))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -121,23 +144,6 @@ fun BoardRankItem(
                 }
             }
         }
-
-        Text(
-            text = item.rank.toString() + stringResource(R.string.board_rank),
-            fontSize = 13.sp,
-            color = colorResource(R.color.white),
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(top = 70.dp)
-                .background(
-                    color = colorResource(R.color.main_green),
-                    shape = RoundedCornerShape(20.dp)
-                )
-                .padding(
-                    horizontal = if (isFirstPlace) 15.dp else 12.dp,
-                    vertical = if (isFirstPlace) 12.dp else 8.dp
-                )
-        )
     }
 }
 
