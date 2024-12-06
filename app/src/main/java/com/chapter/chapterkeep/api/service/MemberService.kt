@@ -3,6 +3,7 @@ package com.chapter.chapterkeep.api.service
 import com.chapter.chapterkeep.api.dto.request.RequestLoginDto
 import com.chapter.chapterkeep.api.dto.response.ResponseCheckDto
 import com.chapter.chapterkeep.api.dto.response.ResponseLoginDto
+import com.chapter.chapterkeep.api.dto.response.ResponseMyPageDto
 import com.chapter.chapterkeep.api.dto.response.ResponseSignUpDto
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -34,5 +35,8 @@ interface MemberService {
     suspend fun getCheckNickName(
         @Query("nickname") nickname: String
     ): ResponseCheckDto
+
+    @GET("/mypage")
+    suspend fun getMyPage():Response<ResponseMyPageDto>
 }
 

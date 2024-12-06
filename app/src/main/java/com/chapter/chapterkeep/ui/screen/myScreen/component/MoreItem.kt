@@ -76,7 +76,7 @@ fun MoreItemPreview() {
         PostData(
             title = "첫 번째 게시글 제목",
             time = "2024-11-25",
-            writer = "작성자 A"
+            writer = "작성자 A",1
         ),
         navController = navController
     )

@@ -85,8 +85,8 @@
     <string name="board_free">자유 게시판</string>
     <string name="board_anonymous">익명</string>
     <string name="board_rank_none">아직 아무도 참여하지 않았습니다.</string>
-    <string name="board_writer_none">작가 미상</string>
-    <string name="board_genre_none">장르 미상</string>
+    <string name="board_department">단과대 및 학과: %s</string>
+    <string name="board_rentalCount">대출수: %d</string>
     <string name="board_recommend_none">오늘의 추천 도서가 없습니다.</string>
 
     // 백일장 게시판
@@ -104,8 +104,11 @@
     <string name="mypage_profile_delete_account">회원탈퇴</string>
     <string name="mypage_profile_time_writer">%s / %s</string>
     <string name="mypage_profile_my_write">내가 쓴 게시글</string>
+    <string name="mypage_profile_my_write_none">아직 작성한 게시글이 없습니다.</string>
     <string name="mypage_profile_like_write">좋아요 누른 게시글</string>
+    <string name="mypage_profile_like_write_none">아직 좋아요 누른 게시글이 없습니다.</string>
     <string name="mypage_profile_comment_write">댓글 단 게시글</string>
+    <string name="mypage_profile_comment_write_none">아직 댓글 단 게시글이 없습니다.</string>
     <string name="mypage_profile_more">더보기</string>
 
     // 백일장 게시글 등록 페이지

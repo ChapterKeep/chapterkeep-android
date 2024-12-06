@@ -2,12 +2,16 @@ package com.chapter.chapterkeep.api.service
 
 import com.chapter.chapterkeep.api.dto.response.ResponseBaekiljangDto
 import com.chapter.chapterkeep.api.dto.response.ResponseDetailBaekiljangDto
+import com.chapter.chapterkeep.api.dto.response.ResponsePostBoard
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PostService {
+    @GET("/post-board")
+    suspend fun getPostBoard(): Response<ResponsePostBoard>
+
     @GET("/post/essay")
     suspend fun getBaekiljang(): Response<ResponseBaekiljangDto>
 

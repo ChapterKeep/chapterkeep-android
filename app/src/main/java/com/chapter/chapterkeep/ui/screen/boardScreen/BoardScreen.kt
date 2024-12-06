@@ -132,11 +132,10 @@ fun BoardScreen(
                 if (rentalCountList.isNotEmpty()) {
                     BoardRecommend(items = rentalCountList.map {
                         BoardRecommendData(
-                            imageResId = R.drawable.img_home_book,
                             title = it.title,
-                            writer = stringResource(R.string.board_writer_none),
-                            genre = stringResource(R.string.board_genre_none),
-                            detail = it.library_url
+                            department = it.department,
+                            rentalCount = it.rentalCount,
+                            library_url = it.library_url
                         )
                     })
                 } else {

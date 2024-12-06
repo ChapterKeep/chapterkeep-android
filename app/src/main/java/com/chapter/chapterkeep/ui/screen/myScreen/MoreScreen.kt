@@ -34,24 +34,24 @@ fun MoreScreen(
             R.string.more_my_title,
             R.string.more_my_subtitle,
             listOf(
-                PostData("내가 쓴 게시글1", "2024-11-25", "작성자 A"),
-                PostData("내가 쓴 게시글2", "2024-11-24", "작성자 B")
+                PostData("내가 쓴 게시글1", "2024-11-25", "작성자 A",1),
+                PostData("내가 쓴 게시글2", "2024-11-24", "작성자 B",1)
             )
         )
         "like_write" -> Triple(
             R.string.more_like_title,
             R.string.more_like_subtitle,
             listOf(
-                PostData("좋아요 누른 게시글1", "2024-11-25", "작성자 A"),
-                PostData("좋아요 누른 게시글2", "2024-11-24", "작성자 B")
+                PostData("좋아요 누른 게시글1", "2024-11-25", "작성자 A",1),
+                PostData("좋아요 누른 게시글2", "2024-11-24", "작성자 B",1)
             )
         )
         "comment_write" -> Triple(
             R.string.more_comment_title,
             R.string.more_comment_subtitle,
             listOf(
-                PostData("댓글 단 게시글1", "2024-11-25", "작성자 A"),
-                PostData("댓글 단 게시글2", "2024-11-24", "작성자 B")
+                PostData("댓글 단 게시글1", "2024-11-25", "작성자 A",1),
+                PostData("댓글 단 게시글2", "2024-11-24", "작성자 B",1)
             )
         )
         else -> Triple(

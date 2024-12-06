@@ -1,9 +1,8 @@
 package com.chapter.chapterkeep.model
 
 data class BoardRecommendData(
-    val imageResId: Int,
     val title: String,
-    val writer: String,
-    val genre: String,
-    val detail: String
+    val department: String,
+    val rentalCount: Long,
+    val library_url: String
 )

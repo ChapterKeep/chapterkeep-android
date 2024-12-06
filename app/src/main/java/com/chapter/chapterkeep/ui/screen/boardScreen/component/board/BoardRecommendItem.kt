@@ -1,25 +1,25 @@
 package com.chapter.chapterkeep.ui.screen.boardScreen.component.board
 
-import androidx.compose.foundation.Image
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
@@ -29,6 +29,8 @@ import com.chapter.chapterkeep.model.BoardRecommendData
 fun BoardRecommendItem(
     item: BoardRecommendData
 ) {
+    val context = LocalContext.current
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -43,13 +45,6 @@ fun BoardRecommendItem(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Image(
-            painter = painterResource(item.imageResId),
-            contentDescription = null,
-            modifier = Modifier.size(60.dp, 100.dp)
-        )
-        Spacer(modifier = Modifier.width(20.dp))
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -60,39 +55,28 @@ fun BoardRecommendItem(
                 modifier = Modifier.padding(bottom = 5.dp)
             )
             Text(
-                text = item.writer,
+                text = stringResource(R.string.board_department, item.department),
                 fontSize = 10.sp,
                 color = colorResource(R.color.gray_800)
             )
             Text(
-                text = item.genre,
+                text = stringResource(R.string.board_rentalCount, item.rentalCount),
                 fontSize = 10.sp,
                 color = colorResource(R.color.gray_800),
                 modifier = Modifier.padding(bottom = 2.dp)
             )
             Text(
-                text = item.detail,
+                text = item.library_url,
                 fontSize = 10.sp,
                 color = colorResource(R.color.gray_600),
                 maxLines = 2,
                 lineHeight = 12.sp,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                modifier = Modifier.clickable {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.library_url))
+                    context.startActivity(intent)
+                }
             )
         }
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun BoardRecommendPreview() {
-    BoardRecommendItem(
-        BoardRecommendData(
-            imageResId = R.drawable.img_home_book,
-            title = "오늘 하루도, 소심한 고양이",
-            writer = "이수민",
-            genre = "에세이",
-            detail = "오늘 하루도, 소심한 고양이 오늘 하루도, 소심한 고양이 오늘 하루도, 소심한 고양이 오늘 하루도, 소심한 고양이 오늘 하루도, 소심한 고양이 오늘 하루도, 소심한 고양이"
-        )
-    )
 }

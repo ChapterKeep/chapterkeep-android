@@ -25,8 +25,12 @@ data class GetPostBoardData(
 data class RentalCountRecommendResDto(
     @SerialName("title")
     val title: String,
+    @SerialName("department")
+    val department: String,
+    @SerialName("rentalCount")
+    val rentalCount: Long,
     @SerialName("library_url")
-    val library_url: String
+    val library_url: String,
 )
 
 @Serializable
