@@ -4,6 +4,7 @@ import com.chapter.chapterkeep.BuildConfig
 import com.chapter.chapterkeep.api.service.BookService
 import com.chapter.chapterkeep.api.service.HomeService
 import com.chapter.chapterkeep.api.service.MemberService
+import com.chapter.chapterkeep.api.service.PostService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -38,4 +39,5 @@ object ServicePool {
     val memberService = ApiFactory.create<MemberService>()
     val homeService = ApiFactory.create<HomeService>()
     val bookService = ApiFactory.create<BookService>()
+    val postService = ApiFactory.create<PostService>()
 }

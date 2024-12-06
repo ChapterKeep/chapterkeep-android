@@ -93,6 +93,8 @@
     <string name="baekiljang_board">백일장 게시판</string>
     <string name="baekiljang_search">게시판의 글을 검색해보세요</string>
     <string name="baekiljang_manager">운영자</string>
+    <string name="baekiljang_month_title">[이달의 주제] 가을</string>
+    <string name="baekiljang_none">아직 등록된 글이 없습니다.</string>
 
     // 마이페이지
     <string name="mypage_profile_nickname"> 님</string>

@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ResponseGetPostBoard(
+data class ResponsePostBoard(
     @SerialName("code")
     val code: String,
     @SerialName("message")

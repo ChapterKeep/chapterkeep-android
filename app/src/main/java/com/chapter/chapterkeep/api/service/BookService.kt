@@ -1,7 +1,7 @@
 package com.chapter.chapterkeep.api.service
 
 import com.chapter.chapterkeep.api.dto.response.ResponseBookReviewDto
-import com.chapter.chapterkeep.api.dto.response.ResponseGetPostBoard
+import com.chapter.chapterkeep.api.dto.response.ResponsePostBoard
 import com.chapter.chapterkeep.api.dto.response.ResponseSearchNickName
 import com.chapter.chapterkeep.api.dto.response.ResponseSearchTitle
 import retrofit2.Response
@@ -26,5 +26,5 @@ interface BookService {
     ): Response<ResponseSearchTitle>
 
     @GET("/post-board")
-    suspend fun getPostBoard(): Response<ResponseGetPostBoard>
+    suspend fun getPostBoard(): Response<ResponsePostBoard>
 }
