@@ -131,7 +131,7 @@ fun BaekiljangScreen(
                                 heartCount = searchResults[index].likesCount.toInt(),
                                 userName = searchResults[index].nickname,
                                 onClick = {
-                                    navController.navigate(Routes.ViewBaekiljang.route)
+                                    navController.navigate(Routes.ViewBaekiljang.createRoute(searchResults[index].postId))
                                 }
                             )
                         }
@@ -163,7 +163,7 @@ fun BaekiljangScreen(
                                 heartCount = baekiljangPosts[index].likesCount.toInt(),
                                 userName = baekiljangPosts[index].nickname,
                                 onClick = {
-                                    navController.navigate(Routes.ViewBaekiljang.route)
+                                    navController.navigate(Routes.ViewBaekiljang.createRoute(baekiljangPosts[index].postId))
                                 }
                             )
                         }

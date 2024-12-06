@@ -21,7 +21,9 @@ sealed class Routes(val route: String) {
     // 디테일 화면 - 게시판
     object Baekiljang : Routes("Baekiljang") // 백일장
     object AddBaekiljang : Routes("AddBaekiljang") // 백일장 게시글 등록
-    object ViewBaekiljang : Routes("ViewBaekiljang") // 백일장 게시글 조회
+    object ViewBaekiljang : Routes("ViewBaekiljang/{postId}") { // 백일장 게시글 조회
+        fun createRoute(postId: Long) = "ViewBaekiljang/$postId"
+    }
 
     // 디테일 화면 - 마이페이지
     object More : Routes("more/{type}") {

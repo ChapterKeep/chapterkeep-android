@@ -83,9 +83,14 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Routes.AddBaekiljang.route) { // 백일장 게시글 등록
             AddBaekiljangScreen(navController)
         }
-        composable(route = Routes.ViewBaekiljang.route) { // 백일장 게시글 조회
-            ViewBaekiljangScreen(navController)
+        composable(
+            route = Routes.ViewBaekiljang.route,
+            arguments = listOf(navArgument("postId") { type = NavType.LongType })
+        ) { backStackEntry ->
+            val postId = backStackEntry.arguments?.getLong("postId") ?: 0L
+            ViewBaekiljangScreen(navController, postId)
         }
+
 
         // 디테일 화면 - 마이페이지
         composable(
