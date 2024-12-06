@@ -1,6 +1,7 @@
 package com.chapter.chapterkeep.ui.screen.myScreen.component
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,18 +17,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.chapter.chapterkeep.R
-import com.chapter.chapterkeep.model.PostData
+import com.chapter.chapterkeep.api.dto.response.PostsData
 import com.chapter.chapterkeep.ui.component.DropDownMenu
 
 @Composable
 fun MoreItem(
-    post: PostData,
+    post: PostsData,
     navController: NavHostController
 ) {
     Column(
@@ -39,6 +38,9 @@ fun MoreItem(
                 shape = RoundedCornerShape(12.dp)
             )
             .padding(15.dp)
+            .clickable {
+                navController.navigate("ViewBaekiljang/${post.postId}")
+            }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -58,26 +60,12 @@ fun MoreItem(
         Text(
             text = stringResource(
                 R.string.mypage_profile_time_writer,
-                post.time,
-                post.writer
+                post.createdAt,
+                post.nickname
             ),
             fontSize = 12.sp,
             fontWeight = FontWeight.Medium,
             color = colorResource(R.color.gray_800)
         )
     }
-}
-
-@Preview
-@Composable
-fun MoreItemPreview() {
-    val navController = rememberNavController()
-    MoreItem(
-        PostData(
-            title = "첫 번째 게시글 제목",
-            time = "2024-11-25",
-            writer = "작성자 A",1
-        ),
-        navController = navController
-    )
 }

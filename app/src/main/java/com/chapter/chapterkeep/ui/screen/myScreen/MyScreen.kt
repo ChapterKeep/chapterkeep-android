@@ -23,6 +23,7 @@ import com.chapter.chapterkeep.R
 import com.chapter.chapterkeep.ui.component.Bar.BottomBar
 import com.chapter.chapterkeep.ui.component.header.HeaderGreenLogo
 import com.chapter.chapterkeep.ui.navigate.Routes
+import com.chapter.chapterkeep.ui.screen.homeScreen.HomeViewModel
 import com.chapter.chapterkeep.ui.screen.myScreen.component.MyPostList
 import com.chapter.chapterkeep.ui.screen.myScreen.component.MyProfileRow
 
@@ -31,6 +32,7 @@ fun MyScreen(
     navController: NavHostController
 ) {
     val viewModel: MyViewModel = viewModel()
+    val honeViewModel: HomeViewModel = viewModel()
 
     val myPageData by viewModel.myPageData.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
@@ -62,6 +64,7 @@ fun MyScreen(
                     writeAccount = myPageData?.postCount?.toInt() ?: 0,
                     logoutOnClick = {
                         TokenManager.clearToken()
+                        honeViewModel.clearData()
                         navController.navigate(Routes.Login.route) {
                             popUpTo(Routes.Login.route) { inclusive = true }
                         }

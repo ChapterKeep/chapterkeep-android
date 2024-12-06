@@ -46,4 +46,9 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+    fun clearData() {
+        profileData = ProfileData("", "", null, false, 0)
+        bookShelfData = emptyList()
+    }
 }

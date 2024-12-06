@@ -37,6 +37,7 @@ fun HomeScreen(
     DoubleBackPressToExit()
 
     LaunchedEffect(Unit) {
+        viewModel.clearData()
         viewModel.fetchHomeData()
     }
 

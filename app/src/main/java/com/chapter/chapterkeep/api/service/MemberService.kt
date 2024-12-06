@@ -4,6 +4,7 @@ import com.chapter.chapterkeep.api.dto.request.RequestLoginDto
 import com.chapter.chapterkeep.api.dto.response.ResponseCheckDto
 import com.chapter.chapterkeep.api.dto.response.ResponseLoginDto
 import com.chapter.chapterkeep.api.dto.response.ResponseMyPageDto
+import com.chapter.chapterkeep.api.dto.response.ResponsePostsDto
 import com.chapter.chapterkeep.api.dto.response.ResponseSignUpDto
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -38,5 +39,14 @@ interface MemberService {
 
     @GET("/mypage")
     suspend fun getMyPage():Response<ResponseMyPageDto>
+
+    @GET("/mypage/myPosts")
+    suspend fun getMoreMyPosts():Response<ResponsePostsDto>
+
+    @GET("/mypage/commentedPosts")
+    suspend fun getMoreCommentedPosts():Response<ResponsePostsDto>
+
+    @GET("/mypage/likedPosts")
+    suspend fun getMoreLikedPosts():Response<ResponsePostsDto>
 }
 
