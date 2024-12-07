@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class BaekiljangViewModel : ViewModel() {
     private val _baekiljangPosts = MutableStateFlow<List<BaekiljangData>>(emptyList())
@@ -79,7 +81,10 @@ class BaekiljangViewModel : ViewModel() {
             try {
                 val response = ServicePool.postService.getDetailBaekiljang(postId)
                 if (response.isSuccessful) {
-                    _detailBaekiljang.value = response.body()?.data
+                    response.body()?.data?.let { data ->
+                        val formattedData = data.copy(createdAt = formatDate(data.createdAt))
+                        _detailBaekiljang.value = formattedData
+                    }
                 } else {
                     _errorMessage.value = "Failed to fetch post details: ${response.message()}"
                 }
@@ -88,6 +93,15 @@ class BaekiljangViewModel : ViewModel() {
             } finally {
                 _isLoading.value = false
             }
+        }
+    }
+
+    private fun formatDate(isoDate: String): String {
+        return try {
+            val parsedDate = LocalDateTime.parse(isoDate, DateTimeFormatter.ISO_DATE_TIME)
+            parsedDate.format(DateTimeFormatter.ofPattern("yyyy년 M월 d일"))
+        } catch (e: Exception) {
+            isoDate
         }
     }
 }

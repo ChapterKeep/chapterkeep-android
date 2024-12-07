@@ -41,7 +41,11 @@ fun BoardRecommendItem(
                 shape = RoundedCornerShape(12.dp)
             )
             .background(color = Color.White, shape = RoundedCornerShape(12.dp))
-            .padding(horizontal = 20.dp, vertical = 10.dp),
+            .padding(horizontal = 20.dp, vertical = 10.dp)
+            .clickable {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.library_url))
+                context.startActivity(intent)
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -64,18 +68,6 @@ fun BoardRecommendItem(
                 fontSize = 10.sp,
                 color = colorResource(R.color.gray_800),
                 modifier = Modifier.padding(bottom = 2.dp)
-            )
-            Text(
-                text = item.library_url,
-                fontSize = 10.sp,
-                color = colorResource(R.color.gray_600),
-                maxLines = 2,
-                lineHeight = 12.sp,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
-                modifier = Modifier.clickable {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.library_url))
-                    context.startActivity(intent)
-                }
             )
         }
     }

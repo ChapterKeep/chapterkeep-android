@@ -14,6 +14,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -34,6 +38,8 @@ fun HomeScreen(
     val profileData by viewModel::profileData
     val bookShelfData by viewModel::bookShelfData
 
+    var isUnlocked by remember { mutableStateOf(true) }
+
     DoubleBackPressToExit()
 
     LaunchedEffect(Unit) {
@@ -44,11 +50,12 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             HeaderWhiteLogoWithBtn(
-                label = R.string.home_open_button,
-                image = R.drawable.ic_lock_open_24
-            ) {
-                TODO("책장 공개 비공개")
-            }
+                label = if(isUnlocked) R.string.home_open_button else R.string.home_unopen_button,
+                image = if(isUnlocked) R.drawable.ic_lock_open_24 else R.drawable.ic_lock_24,
+                onClick = {
+                    isUnlocked = !isUnlocked
+                }
+            )
         },
         bottomBar = {
             BottomBar(2, navController)

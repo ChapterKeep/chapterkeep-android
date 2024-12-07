@@ -77,7 +77,7 @@ fun HeaderWhiteLogoWithBtn(
                     label = label,
                     image = image
                 ) {
-                    TODO("책장 공개 비공개")
+                    onClick()
                 }
             }
         },

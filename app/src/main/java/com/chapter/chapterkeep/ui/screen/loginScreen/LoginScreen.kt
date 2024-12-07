@@ -101,6 +101,7 @@ fun LoginScreen(
                                 navController.navigate(Routes.Home.route) {
                                     popUpTo(Routes.Login.route) { inclusive = true }
                                 }
+                                loginViewModel.clearData()
                             }
                         }
                     }

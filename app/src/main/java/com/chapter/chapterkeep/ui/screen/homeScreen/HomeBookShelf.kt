@@ -40,8 +40,9 @@ fun BookShelf(
                 .padding(start = 20.dp, bottom = 10.dp, end = 20.dp)
                 .fillMaxSize()
                 .clip(RoundedCornerShape(12.dp))
-                .background(color = Color.White),
-            horizontalArrangement = Arrangement.SpaceEvenly,
+                .background(color = Color.White)
+                .padding(horizontal = 20.dp),
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.Bottom
         ) {
             books.forEach{book->
@@ -49,6 +50,7 @@ fun BookShelf(
                     painter = rememberAsyncImagePainter(book.coverUrl),
                     contentDescription = "",
                     modifier = Modifier
+                        .padding(start = 25.dp)
                         .size(62.dp, 100.dp)
                         .clickable {
                             onBookClick(book.reviewId)

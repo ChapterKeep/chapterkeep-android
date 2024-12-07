@@ -49,6 +49,7 @@ fun SignUpScreen_NickName(
                     viewModel.submitSignUp(
                         onSuccess = { message ->
                             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                            viewModel.clearData()
                             navController.navigate(Routes.Login.route) {
                                 popUpTo(Routes.Login.route) { inclusive = true }
                             }

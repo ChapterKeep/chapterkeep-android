@@ -104,11 +104,14 @@ fun EditProfileScreen(
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Done,
                     maxLength = 10,
-                    isAvailable = viewModel.isNickNameAvailable,
+                    isAvailable = signUpViewModel.isNickNameAvailable,
                     availableMessage = R.string.signup_nickname_possible,
                     unavailableMessage = R.string.signup_nickname_impossible,
-                    isClicked = viewModel.isNickNameClicked,
-                    onCheckClick = { signUpViewModel.checkNickNameAvailability() }
+                    isClicked = signUpViewModel.isNickNameClicked,
+                    onCheckClick = {
+                        signUpViewModel.updateUserNickName(userNickName)
+                        signUpViewModel.checkNickNameAvailability()
+                    }
                 )
 
                 LabelledTextFieldWithLimit(

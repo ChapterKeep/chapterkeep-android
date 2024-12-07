@@ -51,7 +51,7 @@ fun MyPostList(
                     color = colorResource(R.color.sub_green).copy(alpha = 0.11f),
                     shape = RoundedCornerShape(20.dp)
                 )
-                .padding(start = 20.dp, end = 20.dp, top = 20.dp)
+                .padding(20.dp)
         ) {
             if (posts.isNullOrEmpty()) {
                 Text(
@@ -105,31 +105,33 @@ fun MyPostList(
                         Spacer(modifier = Modifier.height(10.dp))
                     }
                 }
-            }
 
-            Divider(color = Color.White)
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 12.dp)
-                    .clickable {
-                        onMoreClick()
-                    },
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.mypage_profile_more),
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(end = 5.dp),
-                    color = colorResource(R.color.gray_700)
-                )
-                Image(
-                    painter = painterResource(R.drawable.img_my_more_grey),
-                    contentDescription = null,
-                    modifier = Modifier.size(12.dp)
-                )
+                if (posts.size >= 3) {
+                    Divider(color = Color.White)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 12.dp)
+                            .clickable {
+                                onMoreClick()
+                            },
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(R.string.mypage_profile_more),
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.padding(end = 5.dp),
+                            color = colorResource(R.color.gray_700)
+                        )
+                        Image(
+                            painter = painterResource(R.drawable.img_my_more_grey),
+                            contentDescription = null,
+                            modifier = Modifier.size(12.dp)
+                        )
+                    }
+                }
             }
         }
     }

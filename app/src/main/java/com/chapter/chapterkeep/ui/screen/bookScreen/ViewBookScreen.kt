@@ -57,7 +57,6 @@ fun ViewBookScreen(
     }
 
     if (isLoading) {
-        // 로딩 중 화면 표시
         Box(modifier = Modifier.fillMaxSize()) {
             Text("Loading...", modifier = Modifier.align(Alignment.Center))
         }
@@ -102,36 +101,38 @@ fun ViewBookScreen(
                         .fillMaxWidth()
                         .padding(vertical = 35.dp, horizontal = 30.dp)
                 ) {
-                    ViewBookBar(
-                        image = image,
-                        bookTitle = bookTitle,
-                        bookWriter = bookWriter
-                    )
-                    Spacer(Modifier.height(5.dp))
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        ViewBookBar(
+                            image = image,
+                            bookTitle = bookTitle,
+                            bookWriter = bookWriter
+                        )
+                        Spacer(Modifier.height(5.dp))
 
-                    Divider(
-                        modifier = Modifier.fillMaxWidth(),
-                        thickness = 1.dp,
-                        color = colorResource(R.color.gray_400)
-                    )
-                    Spacer(Modifier.height(15.dp))
+                        Divider(
+                            modifier = Modifier.fillMaxWidth(),
+                            thickness = 1.dp,
+                            color = colorResource(R.color.gray_400)
+                        )
+                        Spacer(Modifier.height(15.dp))
 
-                    ViewBookTitleBar(
-                        title = title,
-                        date = date,
-                        starStates = starStates.toMutableList(),
-                        navController = navController
-                    )
-                    Spacer(Modifier.height(8.dp))
+                        ViewBookTitleBar(
+                            title = title,
+                            date = date,
+                            starStates = starStates.toMutableList(),
+                            navController = navController
+                        )
+                        Spacer(Modifier.height(8.dp))
 
-                    ViewBookQuote(quote = quote)
-                    Spacer(Modifier.height(15.dp))
+                        ViewBookQuote(quote = quote)
+                        Spacer(Modifier.height(15.dp))
+                    }
 
-                    Column(
+                    Box(
                         modifier = Modifier
+                            .weight(1f)
                             .fillMaxWidth()
-                            .height(365.dp)
-                            .padding(start = 10.dp, end = 10.dp)
+                            .padding(horizontal = 10.dp)
                             .verticalScroll(scrollState)
                     ) {
                         Text(
