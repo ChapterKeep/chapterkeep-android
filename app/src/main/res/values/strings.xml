@@ -77,7 +77,7 @@
     // 게시판
     <string name="board_board">게시판</string>
     <string name="board_rank">위</string>
-    <string name="board_month_baekiljang">이달의 백일</string>
+    <string name="board_month_baekiljang">이달의 백일장</string>
     <string name="board_today_recommend">오늘의 추천 도서</string>
     <string name="board_genre">장르별 게시판</string>
     <string name="board_oneline">한줄평 게시판</string>

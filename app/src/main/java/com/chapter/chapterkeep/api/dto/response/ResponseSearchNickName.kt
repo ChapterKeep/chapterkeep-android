@@ -15,6 +15,8 @@ data class ResponseSearchNickName(
 
 @Serializable
 data class SearchNickNameData(
+    @SerialName("memberId")
+    val memberId: Long,
     @SerialName("nickname")
     val nickname: String,
     @SerialName("profileUrl")

@@ -32,8 +32,10 @@ class SearchViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     response.body()?.data?.let { data ->
                         _profileResults.value = data
+                        _errorMessage.value = null
                     } ?: run {
                         _profileResults.value = emptyList()
+                        _errorMessage.value = null
                     }
                 } else {
                     _errorMessage.value = "Search failed: ${response.message()}"

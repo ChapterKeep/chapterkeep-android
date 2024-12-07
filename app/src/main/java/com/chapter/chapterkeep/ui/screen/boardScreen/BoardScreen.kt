@@ -112,11 +112,15 @@ fun BoardScreen(
                         BoardRankData(
                             imageResId = R.drawable.img_profile_select,
                             rank = essayPostList.indexOf(it) + 1,
+                            postId = it.postId,
                             title = it.postTitle,
                             likes = it.likesCount.toInt(),
                             userName = if (it.anonymous) stringResource(R.string.board_anonymous) else it.nickname
                         )
-                    })
+                    },
+                        onItemClick = {postId ->
+                            navController.navigate("ViewBaekiljang/$postId")
+                        })
                 } else {
                     Text(
                         text = stringResource(R.string.board_rank_none),

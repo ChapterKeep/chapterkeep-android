@@ -3,6 +3,7 @@ package com.chapter.chapterkeep.ui.screen.boardScreen.component.board
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,7 +32,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
@@ -39,7 +39,8 @@ import com.chapter.chapterkeep.model.BoardRankData
 
 @Composable
 fun BoardRankItem(
-    item: BoardRankData
+    item: BoardRankData,
+    onClick: () -> Unit
 ) {
     val isFirstPlace = item.rank == 1
 
@@ -90,7 +91,10 @@ fun BoardRankItem(
                         color = Color.White,
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .padding(start = 20.dp, end = 20.dp, bottom = 10.dp),
+                    .padding(start = 20.dp, end = 20.dp, bottom = 10.dp)
+                    .clickable {
+                        onClick()
+                    },
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Bottom
             ) {
@@ -145,18 +149,4 @@ fun BoardRankItem(
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun BoardScreenPreview() {
-    BoardRankItem(
-        BoardRankData(
-            imageResId = R.drawable.img_profile_select,
-            rank = 2,
-            title = "Best Chapter",
-            likes = 123,
-            userName = "Alice"
-        )
-    )
 }

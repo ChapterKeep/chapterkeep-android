@@ -3,6 +3,7 @@ package com.chapter.chapterkeep.ui.screen.searchScreen.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,7 +29,8 @@ import com.chapter.chapterkeep.R
 fun TabBookItem(
     image: String,
     title: String,
-    writer: String
+    writer: String,
+    onClick: () -> Unit
 ) {
     Column {
         Spacer(modifier = Modifier.height(20.dp))
@@ -41,7 +43,10 @@ fun TabBookItem(
                     shape = RoundedCornerShape(12.dp)
                 )
                 .background(color = Color.White, shape = RoundedCornerShape(12.dp))
-                .padding(horizontal = 20.dp, vertical = 10.dp),
+                .padding(horizontal = 20.dp, vertical = 10.dp)
+                .clickable {
+                    onClick()
+                },
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {

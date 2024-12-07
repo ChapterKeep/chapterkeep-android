@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chapter.chapterkeep.R
@@ -22,14 +21,15 @@ import com.chapter.chapterkeep.model.BoardRankData
 
 @Composable
 fun BoardRank(
-    items: List<BoardRankData>
+    items: List<BoardRankData>,
+    onItemClick: (Long) -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth(),
     ) {
         Text(
-            text = stringResource(R.string.board_baekiljang),
+            text = stringResource(R.string.board_month_baekiljang),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.main_green),
@@ -45,38 +45,11 @@ fun BoardRank(
                 if (index == 0) {
                     Spacer(modifier = Modifier.width(20.dp))
                 }
-                BoardRankItem(item = items[index])
+                BoardRankItem(
+                    item = items[index],
+                    onClick = {onItemClick(items[index].postId)}
+                )
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun BoardRankPreview() {
-    val sampleItems = listOf(
-        BoardRankData(
-            imageResId = R.drawable.img_profile_select,
-            rank = 1,
-            title = "Best Chapter",
-            likes = 123,
-            userName = "Alice"
-        ),
-        BoardRankData(
-            imageResId = R.drawable.img_profile_select,
-            rank = 2,
-            title = "Great Read",
-            likes = 98,
-            userName = "Bob"
-        ),
-        BoardRankData(
-            imageResId = R.drawable.img_profile_select,
-            rank = 3,
-            title = "Popular Story",
-            likes = 76,
-            userName = "Charlie"
-        )
-    )
-
-    BoardRank(items = sampleItems)
 }

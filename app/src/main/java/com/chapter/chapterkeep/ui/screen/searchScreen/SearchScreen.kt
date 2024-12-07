@@ -249,7 +249,10 @@ fun SearchScreen(
                                 TabBookItem(
                                     image = book.coverUrl,
                                     title = book.reviewTitle,
-                                    writer = book.nickname
+                                    writer = book.nickname,
+                                    onClick = {
+                                        navController.navigate("ViewBook/${book.reviewId}")
+                                    }
                                 )
 
                                 if (index == bookResults.size - 1) {

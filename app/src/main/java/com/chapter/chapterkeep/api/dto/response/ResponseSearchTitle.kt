@@ -15,6 +15,8 @@ data class ResponseSearchTitle(
 
 @Serializable
 data class SearchTitleData(
+    @SerialName("reviewId")
+    val reviewId: Long,
     @SerialName("reviewTitle")
     val reviewTitle: String,
     @SerialName("coverUrl")

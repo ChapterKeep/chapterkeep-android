@@ -41,6 +41,8 @@ data class EssayPostResDto(
     val profileUrl: String,
     @SerialName("anonymous")
     val anonymous: Boolean,
+    @SerialName("postId")
+    val postId: Long,
     @SerialName("postTitle")
     val postTitle: String,
     @SerialName("likesCount")
