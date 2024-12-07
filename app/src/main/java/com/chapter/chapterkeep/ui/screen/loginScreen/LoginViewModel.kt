@@ -46,7 +46,7 @@ class LoginViewModel : ViewModel() {
                         onLoginResult(false, responseBody?.message ?: "알 수 없는 오류")
                     }
                 } else {
-                    onLoginResult(false, "로그인 실패: ${response.message()}")
+                    onLoginResult(false, "입력하신 정보가 올바르지 않습니다. 다시 확인해주세요.")
                 }
             } catch (e: Exception) {
                 onLoginResult(false, "로그인 중 오류가 발생했습니다: ${e.message}")
